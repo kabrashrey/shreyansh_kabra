@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./navbar.scss";
 import logoImg from "../../assets/react.svg";
 import { FaBars, FaSun, FaMoon } from "react-icons/fa";

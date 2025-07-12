@@ -1,4 +1,3 @@
-import React from "react";
 import "./communication.scss";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 

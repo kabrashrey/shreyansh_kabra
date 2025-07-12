@@ -1,4 +1,3 @@
-import React from "react";
 import "./education.scss";
 import uscLogo from "../../assets/USC_logo.png";
 import jecrcLogo from "../../assets/ju.png";

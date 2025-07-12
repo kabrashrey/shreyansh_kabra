@@ -1,4 +1,3 @@
-import React from "react";
 import "./experiences.scss";
 import hpeLogo from "../../assets/hpe.jpeg";
 
