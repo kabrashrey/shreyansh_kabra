@@ -1,0 +1,119 @@
+:root {
+  --text-light: #334155;
+}
+
+body.dark-mode {
+  --text-light: #d1d5db;
+}
+
+.projects-section {
+  padding: 4rem 1rem;
+  background-color: var(--light);
+  color: var(--dark);
+  scroll-margin-top: 100px;
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .project-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-img {
+      height: 180px;
+      background: var(--gray-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem;
+
+      img {
+        object-fit: cover;
+        max-height: 100%;
+        max-width: 100%;
+        border-radius: 6px;
+      }
+    }
+
+    .project-content {
+      padding: 1.5rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      h3 {
+        font-size: 1.2rem;
+        color: var(--primary);
+        margin-bottom: 0.75rem;
+      }
+
+      p.description {
+        font-size: 0.95rem;
+        color: var(--text-light);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+
+      .project-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+
+        a {
+          font-size: 1.6rem;
+          color: var(--primary);
+          transition: color 0.3s ease, transform 0.2s ease;
+
+          &:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Dark mode
+  body.dark-mode & {
+    background-color: #1e1e1e;
+    color: var(--dark);
+
+    .project-card {
+      background-color: #2b2b2b;
+
+      .project-content {
+        h3,
+        .project-icons a {
+          color: var(--primary);
+        }
+
+        p.description {
+          color: var(--text-light); // Will now resolve to light gray in dark mode
+        }
+      }
+    }
+  }
+}

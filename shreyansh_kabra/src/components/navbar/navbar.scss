@@ -1,0 +1,156 @@
+:root {
+  --primary-bg: rgba(30, 41, 59, 0.95); // Dark background for navbar
+  --light-bg: #ffffff;
+  --light-text: #1e293b;
+  --dark-text: #ffffff;
+  --accent: #fb7185;
+}
+
+.navContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--primary-bg);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &.scrolled {
+    background-color: rgba(30, 41, 59, 0.9);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.75rem 1.5rem;
+    width: 100%;
+  }
+
+  .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; // spacing between image and text
+  color: var(--dark-text);
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+
+  .logo-image {
+    width: 32px;   // adjust size as needed
+    height: 32px;
+    object-fit: contain;
+  }
+  }
+
+  .navLinks {
+    display: flex;
+    gap: 2rem;
+
+    a {
+      color: var(--dark-text);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--accent);
+      }
+
+      &.active {
+        color: var(--accent);
+        font-weight: 600;
+      }
+    }
+  }
+
+  .menuToggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dark-text);
+    z-index: 1002;
+  }
+
+  // Responsive styling
+  @media (max-width: 768px) {
+    .navLinks {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--primary-bg);
+      flex-direction: column;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      width: 100%;
+      z-index: 1001;
+
+      a {
+        padding: 1rem;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--dark-text);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.3);
+          color: var(--accent);
+        }
+      }
+    }
+
+    .navLinks.active {
+      max-height: 50vh;
+      padding: 0.5rem 0;
+      overflow-y: auto;
+    }
+
+    .menuToggle {
+      display: block;
+    }
+  }
+
+    .theme-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--dark-text);
+    font-size: 1.4rem;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+}
+
+// Optional: dark-mode toggle support (if using a class like .dark-mode)
+.dark-mode {
+  .navContainer {
+    background-color: #0f172a;
+
+    .logo,
+    .navLinks a,
+    .menuToggle {
+      color: var(--dark-text);
+    }
+
+    .navLinks a:hover {
+      color: var(--accent);
+    }
+  }
+}

@@ -1,0 +1,49 @@
+.technical-section {
+  padding: 4rem 1rem;
+  background-color: var(--light);
+  color: var(--dark);
+  scroll-margin-top: 100px;
+
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: center;
+  }
+
+  .skill-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    background-color: #fff;
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .skill-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--primary);
+  }
+
+  // Dark mode
+  body.dark-mode & {
+    background-color: #1e1e1e;
+    color: #f1f5f9;
+
+    .skill-card {
+      background-color: #2b2b2b;
+      color: #f1f5f9;
+    }
+  }
+}
