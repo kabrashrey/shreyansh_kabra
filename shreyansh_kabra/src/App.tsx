@@ -20,7 +20,7 @@ function App() {
     <div>
       <Navbar />
       <main className="content">
-          <About />
+        <About />
 
         <Suspense fallback={null}>
           <Experiences />

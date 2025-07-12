@@ -84,6 +84,29 @@ body.dark-mode {
             color: var(--accent);
             transform: scale(1.1);
           }
+          &.visit-site {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--primary);
+
+            &:hover {
+              color: var(--accent);
+              transform: none;
+
+              .external-icon {
+                transform: translateY(-2px);
+              }
+            }
+
+            .external-icon {
+              font-size: 1rem;
+              transition: transform 0.2s ease;
+            }
+          }
         }
       }
     }
@@ -111,7 +134,9 @@ body.dark-mode {
         }
 
         p.description {
-          color: var(--text-light); // Will now resolve to light gray in dark mode
+          color: var(
+            --text-light
+          ); // Will now resolve to light gray in dark mode
         }
       }
     }

@@ -8,7 +8,7 @@ const experiences = [
     duration: "Aug 2022 – Dec 2024",
     logo: hpeLogo,
     description:
-      "Worked on cloud automation, infrastructure-as-code, and GCP integrations for enterprise clients.",
+      "At HPE, I worked as a Cloud Developer, building APIs using Python, Django, and DRF for invoice management and contracts onboarding portals that integrated PostgreSQL and ServiceNow. I automated data workflows with Apache Airflow, built end-to-end API and UI components for a web-based notification system that improved communication efficiency by 80%, and contributed to the HPE GreenLake NaaS platform with cross-module REST API integrations. I also developed dynamic ITSM forms, reducing submission errors by over 50%, led mentoring sessions for junior developers, and collaborated with over 10 international cross-functional teams to ensure timely project delivery.",
   },
   {
     company: "Hewlett Packard Enterprise",
@@ -16,7 +16,7 @@ const experiences = [
     duration: "Jan 2022 – Aug 2022",
     logo: hpeLogo,
     description:
-      "Interned in the same team, focused on monitoring systems and backend tooling for cloud services.",
+      "During my internship at HPE in the NaaS team, I developed a Python package with async capabilities to automate switch and IAP configuration, eliminating 90% of manual setup time. I enhanced the troubleshooting workflow by reducing manual effort by 70% and improved execution speed through asynchronous patterns. I also created REST APIs to integrate ServiceNow with internal tooling, improving data exchange and operational efficiency by over 50%.",
   },
 ];
 

@@ -11,31 +11,35 @@ const About = () => {
         <img src={profileImg} alt="Shreyansh Kabra" className="about-image" />
         <div className="about-text">
           <p>
-            I'm Shreyansh Kabra, a software engineer with a passion for
-            full-stack development, cloud solutions, and scalable systems. I
-            love building elegant, performant products that solve real-world
-            problems. Currently pursuing my M.S. in Computer Science at USC, and
-            previously a Cloud Developer at HPE. I'm Shreyansh Kabra, a software
-            engineer with a passion for full-stack development, cloud solutions,
-            and scalable systems. I love building elegant, performant products
-            that solve real-world problems. Currently pursuing my M.S. in
-            Computer Science at USC, and previously a Cloud Developer at HPE.
-            I'm Shreyansh Kabra, a software engineer with a passion for
-            full-stack development, cloud solutions, and scalable systems. I
-            love building elegant, performant products that solve real-world
-            problems. Currently pursuing my M.S. in Computer Science at USC, and
-            previously a Cloud Developer at HPE. I'm Shreyansh Kabra, a software
-            engineer with a passion for full-stack development, cloud solutions,
-            and scalable systems. I love building elegant, performant products
-            that solve real-world problems. Currently pursuing my M.S. in
-            Computer Science at USC, and previously a Cloud Developer at HPE.
-            I'm Shreyansh Kabra, a software engineer with a passion for
-            full-stack development, cloud solutions, and scalable systems. I
-            love building elegant, performant products that solve real-world
-            problems. Currently pursuing my M.S. in Computer Science at USC, and
-            previously a Cloud Developer at HPE.
+            I'm Shreyansh Kabra, a passionate software engineer currently
+            pursuing my M.S. in Computer Science at the University of Southern
+            California, Los Angeles. I completed my B.Tech in Computer Science
+            and Engineering in 2022 from JECRC University, Jaipur.
           </p>
 
+          <p>
+            I spent over 2.5 years at Hewlett Packard Enterprise (HPE) as a
+            Cloud Engineer, where I developed automation pipelines, built REST
+            APIs, and worked extensively on both backend and frontend
+            development using Python (Django), React.js, HTML5, CSS3, and
+            managed databases via PgAdmin and psql. I also collaborated closely
+            with international teams across the US and India, and mentored
+            junior developers.
+          </p>
+
+          <p>
+            Prior to that, I interned at HPE as an R&D Intern, where I focused
+            on developing Python-based automation scripts for switch and IAP
+            troubleshooting using regex. I also worked with ServiceNow during
+            this time and later earned the Certified ServiceNow System
+            Administrator (CSA) certification.
+          </p>
+
+          <p>
+            My interests span across Artificial Intelligence, Machine Learning,
+            and Full-Stack Web Development. I enjoy solving real-world problems
+            with elegant and efficient solutions.
+          </p>
           <a
             href={resume}
             download="Shreyansh_Kabra_Resume.pdf"

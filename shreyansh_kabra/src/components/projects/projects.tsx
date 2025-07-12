@@ -1,31 +1,33 @@
 import { FaGithub } from "react-icons/fa";
+import { FiExternalLink } from "react-icons/fi";
 import "./projects.scss";
 
 import artsyWeb from "../../assets/artsy_web.png";
-import portfolio from "../../assets/react.svg";
+import portfolio from "../../assets/portfolio.png";
 import artsyAndroid from "../../assets/artsy_android.png";
 
 const projectData = [
   {
-    title: "Artist Search Web App",
+    title: "Artist Search – Web App",
     image: artsyWeb,
     github: "https://github.com/kabrashrey/artsy-search",
+    live: "https://artsy-shrey-3.wl.r.appspot.com/#/",
     description:
-      "Built using Node.js and React.js, this app allows users to search for artists and view related metadata using GCP and MongoDB.",
+      "Developed a full-stack web application using React.js and Node.js (Express) that integrates the Artsy API to explore over 100,000 artists and artworks. Implemented JWT-based authentication, structured MongoDB collections for users and catalog, and deployed on Google Cloud App Engine with perfect Lighthouse scores for mobile and desktop.",
   },
   {
-    title: "Artist Search Android App",
+    title: "Artist Search – Android App",
     image: artsyAndroid,
     github: "https://github.com/kabrashrey/artsy-mobile-app",
     description:
-      "Built using Kotlin and Node.js, this app allows users to search for artists and view related metadata using GCP and MongoDB.",
+      "Created a native Android application using Kotlin and Android SDK with a Node.js backend to access Artsy’s database. Secured with token-based authentication and persisted data using MongoDB, offering mobile users a seamless search and discovery experience.",
   },
   {
     title: "Portfolio Website",
     image: portfolio,
     github: "https://github.com/kabrashrey/shreyansh_kabra",
     description:
-      "Personal website developed using React, TypeScript, and Vite. Implements animations, dark mode, and full responsiveness.",
+      "Designed and built a personal portfolio using React, TypeScript, and Vite. Includes dark/light mode toggle, responsive layout, modular components, and performance-optimized loading for smooth UX across devices.",
   },
 ];
 
@@ -52,6 +54,18 @@ const Projects = () => {
                 >
                   <FaGithub />
                 </a>
+                {proj.live && (
+                  <a
+                    href={proj.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="visit-site"
+                    title="Live Site"
+                  >
+                    <FiExternalLink className="external-icon" />
+                    Visit Site
+                  </a>
+                )}
               </div>
             </div>
           </div>

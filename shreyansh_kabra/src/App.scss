@@ -10,7 +10,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   background-color: var(--light);
   color: var(--dark);
@@ -59,8 +59,8 @@ section {
   &::after {
     content: "";
     display: block;
-    width: 3.5em;         /* width relative to font size */
-    height: 0.12em;        /* height relative to font size */
+    width: 3.5em; /* width relative to font size */
+    height: 0.12em; /* height relative to font size */
     background: linear-gradient(to right, var(--primary), var(--accent));
     margin: 0.3em auto 0; /* margin relative to font size */
     border-radius: 0.1em;
@@ -72,7 +72,7 @@ section {
     font-size: 1.6rem;
 
     &::after {
-      width: 3em;        /* slightly smaller on smaller screens */
+      width: 3em; /* slightly smaller on smaller screens */
       height: 0.18em;
       margin-top: 0.25em;
     }

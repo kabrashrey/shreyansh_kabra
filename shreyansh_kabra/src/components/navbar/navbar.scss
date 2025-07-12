@@ -32,19 +32,19 @@
   }
 
   .logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem; // spacing between image and text
-  color: var(--dark-text);
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; // spacing between image and text
+    color: var(--dark-text);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
 
-  .logo-image {
-    width: 32px;   // adjust size as needed
-    height: 32px;
-    object-fit: contain;
-  }
+    .logo-image {
+      width: 32px; // adjust size as needed
+      height: 32px;
+      object-fit: contain;
+    }
   }
 
   .navLinks {
@@ -121,7 +121,7 @@
     }
   }
 
-    .theme-toggle-btn {
+  .theme-toggle-btn {
     background: none;
     border: none;
     cursor: pointer;
