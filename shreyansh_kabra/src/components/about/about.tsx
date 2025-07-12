@@ -1,5 +1,5 @@
 import "./about.scss";
-import profileImg from "../../assets/react.svg";
+import profileImg from "../../assets/me.jpg";
 import resume from "../../assets/Shreyansh_Kabra.pdf";
 import { FaDownload } from "react-icons/fa";
 

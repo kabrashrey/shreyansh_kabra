@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import "./navbar.scss";
-import logoImg from "../../assets/react.svg";
+import logoImg from "../../../public/logo.png";
 import { FaBars, FaSun, FaMoon } from "react-icons/fa";
 import { ThemeContext } from "../../context/themeContext";
 

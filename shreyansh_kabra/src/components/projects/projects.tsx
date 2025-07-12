@@ -1,31 +1,31 @@
 import { FaGithub } from "react-icons/fa";
 import "./projects.scss";
 
-import projectImg1 from "../../assets/react.svg";
-import projectImg2 from "../../assets/react.svg";
-import projectImg3 from "../../assets/react.svg";
+import artsyWeb from "../../assets/artsy_web.png";
+import portfolio from "../../assets/react.svg";
+import artsyAndroid from "../../assets/artsy_android.png";
 
 const projectData = [
   {
-    title: "Artist Search App",
-    image: projectImg1,
-    github: "https://github.com/kabrashrey/artist-search",
+    title: "Artist Search Web App",
+    image: artsyWeb,
+    github: "https://github.com/kabrashrey/artsy-search",
     description:
-      "Built using Kotlin and Node.js, this app allows users to search for music artists and view related metadata using GCP and MongoDB.",
+      "Built using Node.js and React.js, this app allows users to search for artists and view related metadata using GCP and MongoDB.",
+  },
+  {
+    title: "Artist Search Android App",
+    image: artsyAndroid,
+    github: "https://github.com/kabrashrey/artsy-mobile-app",
+    description:
+      "Built using Kotlin and Node.js, this app allows users to search for artists and view related metadata using GCP and MongoDB.",
   },
   {
     title: "Portfolio Website",
-    image: projectImg2,
-    github: "https://github.com/kabrashrey/portfolio",
+    image: portfolio,
+    github: "https://github.com/kabrashrey/shreyansh_kabra",
     description:
       "Personal website developed using React, TypeScript, and Vite. Implements animations, dark mode, and full responsiveness.",
-  },
-  {
-    title: "Cloud Automation Tool",
-    image: projectImg3,
-    github: "https://github.com/kabrashrey/cloud-tool",
-    description:
-      "Python-based CLI tool to automate GCP deployments using Terraform and service accounts. Used internally at HPE.",
   },
 ];
 
