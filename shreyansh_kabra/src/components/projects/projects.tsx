@@ -1,10 +1,12 @@
 import { FaGithub } from "react-icons/fa";
-import { FiExternalLink } from "react-icons/fi";
+// import { FiExternalLink } from "react-icons/fi";
 import "./projects.scss";
 
 import artsyWeb from "../../assets/artsy_web.png";
 import portfolio from "../../assets/portfolio.png";
 import artsyAndroid from "../../assets/artsy_android.png";
+// import reactImg from "../..assets/react.png";
+import tensorflowImg from "../../assets/TL.png";
 
 const projectData = [
   {
@@ -30,7 +32,7 @@ const projectData = [
   },
   {
     title: "Image Classification – Transfer Learning",
-    image: artsyWeb,
+    image: tensorflowImg,
     github: "https://github.com/USC-DSCI-552/final-project-kabrashrey",
     description:
       "Implemented an image classification model using transfer learning techniques with TensorFlow and Keras. Fine-tuned a pre-trained model on a custom dataset of artworks, achieving high accuracy and demonstrating the effectiveness of transfer learning in the art domain.",
