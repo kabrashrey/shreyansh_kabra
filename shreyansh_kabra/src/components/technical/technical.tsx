@@ -15,6 +15,8 @@ import {
   SiHtml5,
   SiCss3,
   SiAndroid,
+  SiTensorflow,
+  SiKeras
 } from "react-icons/si";
 
 import { FaGit } from "react-icons/fa";
@@ -36,6 +38,8 @@ const skills = [
   { name: "HTML5", Icon: SiHtml5 },
   { name: "CSS3", Icon: SiCss3 },
   { name: "Android", Icon: SiAndroid },
+  { name: "TensorFlow", Icon: SiTensorflow },
+  { name: "Keras", Icon: SiKeras },
 ];
 
 const Technical: React.FC = () => {
