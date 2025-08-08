@@ -11,7 +11,6 @@ const projectData = [
     title: "Artist Search – Web App",
     image: artsyWeb,
     github: "https://github.com/kabrashrey/artsy-search",
-    live: "https://artsy-shrey-3.wl.r.appspot.com/#/",
     description:
       "Developed a full-stack web application using React.js and Node.js (Express) that integrates the Artsy API to explore over 100,000 artists and artworks. Implemented JWT-based authentication, structured MongoDB collections for users and catalog, and deployed on Google Cloud App Engine with perfect Lighthouse scores for mobile and desktop.",
   },
@@ -28,6 +27,13 @@ const projectData = [
     github: "https://github.com/kabrashrey/shreyansh_kabra",
     description:
       "Designed and built a personal portfolio using React, TypeScript, and Vite. Includes dark/light mode toggle, responsive layout, modular components, and performance-optimized loading for smooth UX across devices.",
+  },
+  {
+    title: "Image Classification – Transfer Learning",
+    image: artsyWeb,
+    github: "https://github.com/USC-DSCI-552/final-project-kabrashrey",
+    description:
+      "Implemented an image classification model using transfer learning techniques with TensorFlow and Keras. Fine-tuned a pre-trained model on a custom dataset of artworks, achieving high accuracy and demonstrating the effectiveness of transfer learning in the art domain.",
   },
 ];
 
@@ -54,9 +60,9 @@ const Projects = () => {
                 >
                   <FaGithub />
                 </a>
-                {proj.live && (
+                {/* {proj?.live && (
                   <a
-                    href={proj.live}
+                    href={proj?.live}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="visit-site"
@@ -65,7 +71,7 @@ const Projects = () => {
                     <FiExternalLink className="external-icon" />
                     Visit Site
                   </a>
-                )}
+                )} */}
               </div>
             </div>
           </div>
