@@ -33,7 +33,8 @@ const projectData = [
   {
     title: "Image Classification – Transfer Learning",
     image: tensorflowImg,
-    github: "https://github.com/USC-DSCI-552/final-project-kabrashrey",
+    github:
+      "https://github.com/kabrashrey/Image-Classification-Transfer-Learning",
     description:
       "Implemented an image classification model using transfer learning techniques with TensorFlow and Keras. Fine-tuned a pre-trained model on a custom dataset of artworks, achieving high accuracy and demonstrating the effectiveness of transfer learning in the art domain.",
   },
