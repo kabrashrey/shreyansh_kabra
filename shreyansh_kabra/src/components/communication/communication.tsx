@@ -26,7 +26,12 @@ const Communication = () => {
         >
           <FaGithub />
         </a>
-        <a href="mailto:kabras@usc.edu" aria-label="Send Email">
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=kabras@usc.edu"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Send Email"
+        >
           <FaEnvelope />
         </a>
       </div>
