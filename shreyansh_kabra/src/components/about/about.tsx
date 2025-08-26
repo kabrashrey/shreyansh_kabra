@@ -19,12 +19,12 @@ const About = () => {
 
           <p>
             I spent over 2.5 years at Hewlett Packard Enterprise (HPE) as a
-            Cloud Engineer, where I developed automation pipelines, built REST
-            APIs, and worked extensively on both backend and frontend
+            Cloud Engineer, where I built automation pipelines, developed REST
+            APIs, and contributed extensively on both backend and frontend
             development using Python (Django), React.js, HTML5, CSS3, and
-            managed databases via PgAdmin and psql. I also collaborated closely
-            with international teams across the US and India, and mentored
-            junior developers.
+            managed databases via PgAdmin and psql. My role also involved
+            mentoring junior developers and collaborating with international
+            teams across the US and India.
           </p>
 
           <p>
@@ -37,8 +37,9 @@ const About = () => {
 
           <p>
             My interests span across Artificial Intelligence, Machine Learning,
-            and Full-Stack Web Development. I enjoy solving real-world problems
-            with elegant and efficient solutions.
+            and Full-Stack Web Development, and I am driven by the challenge of
+            solving real-world problems through innovative and efficient
+            solutions.
           </p>
           <a
             href={resume}
