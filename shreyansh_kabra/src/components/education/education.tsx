@@ -9,6 +9,7 @@ const educationData = [
     degree: "M.S. in Computer Science",
     branch: "Computer Science",
     years: "2025 - 2026 (Expected)",
+    website: "https://www.usc.edu/",
   },
   {
     logo: jecrcLogo,
@@ -16,6 +17,7 @@ const educationData = [
     degree: "B.Tech in Computer Science and Engineering",
     branch: "Computer Science and Engineering",
     years: "2018 - 2022",
+    website: "https://www.jecrcuniversity.edu.in/",
   },
 ];
 
@@ -25,15 +27,23 @@ const Education = () => {
       <h2 className="section-heading">Education</h2>
       <div className="education-wrapper">
         {educationData.map((edu, idx) => (
-          <div className="education-card" key={idx}>
-            <img src={edu.logo} alt={`${edu.college} logo`} loading="lazy" />
-            <div className="education-details">
-              <h3>{edu.college}</h3>
-              <p className="degree">{edu.degree}</p>
-              <p className="branch">{edu.branch}</p>
-              <p className="years">{edu.years}</p>
+          <a
+            href={edu.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="education-card-link"
+            key={idx}
+          >
+            <div className="education-card">
+              <img src={edu.logo} alt={`${edu.college} logo`} loading="lazy" />
+              <div className="education-details">
+                <h3>{edu.college}</h3>
+                <p className="degree">{edu.degree}</p>
+                <p className="branch">{edu.branch}</p>
+                <p className="years">{edu.years}</p>
+              </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </section>

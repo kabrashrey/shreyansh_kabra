@@ -12,6 +12,22 @@
   margin: 0 auto;
 }
 
+.experience-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &:hover .experience-card {
+    transform: none;
+  }
+}
+
 .experience-card {
   display: flex;
   align-items: flex-start;
@@ -55,7 +71,6 @@
   }
 
   &:hover {
-    transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   }
 }
@@ -81,6 +96,10 @@ body.dark-mode {
   .experience-section {
     background-color: #1e1e1e;
     color: #f1f5f9;
+  }
+
+  .experience-card-link {
+    color: inherit;
   }
 
   .experience-card {

@@ -54,38 +54,41 @@ const Projects = () => {
       <h2 className="section-heading">Personal Projects</h2>
       <div className="projects-grid">
         {projectData.map((proj, index) => (
-          <div className="project-card" key={index}>
-            <div className="project-img">
-              <img src={proj.image} alt={proj.title} loading="lazy" />
-            </div>
+          <a
+            href={proj.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-card-link"
+            key={index}
+          >
+            <div className="project-card">
+              <div className="project-img">
+                <img src={proj.image} alt={proj.title} loading="lazy" />
+              </div>
 
-            <div className="project-content">
-              <h3>{proj.title}</h3>
-              <p className="description">{proj.description}</p>
-              <div className="project-icons">
-                <a
-                  href={proj.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="GitHub Repo"
-                >
-                  <FaGithub />
-                </a>
-                {/* {proj?.live && (
-                  <a
-                    href={proj?.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="visit-site"
-                    title="Live Site"
-                  >
-                    <FiExternalLink className="external-icon" />
-                    Visit Site
-                  </a>
-                )} */}
+              <div className="project-content">
+                <h3>{proj.title}</h3>
+                <p className="description">{proj.description}</p>
+                <div className="project-icons">
+                  <span title="GitHub Repo">
+                    <FaGithub />
+                  </span>
+                  {/* {proj?.live && (
+                    <a
+                      href={proj?.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="visit-site"
+                      title="Live Site"
+                    >
+                      <FiExternalLink className="external-icon" />
+                      Visit Site
+                    </a>
+                  )} */}
+                </div>
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </section>

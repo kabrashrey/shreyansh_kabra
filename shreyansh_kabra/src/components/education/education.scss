@@ -17,6 +17,22 @@
     flex-wrap: wrap;
   }
 
+  .education-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    &:hover .education-card {
+      transform: none;
+    }
+  }
+
   .education-card {
     background: white;
     border-radius: 12px;
@@ -58,7 +74,6 @@
     }
 
     &:hover {
-      transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
   }
@@ -81,6 +96,10 @@
   body.dark-mode & {
     background-color: #1e1e1e;
     color: #f1f5f9;
+
+    .education-card-link {
+      color: inherit;
+    }
 
     .education-card {
       background-color: #2b2b2b;
