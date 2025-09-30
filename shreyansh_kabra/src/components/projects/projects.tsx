@@ -6,8 +6,8 @@ import artsyWeb from "../../assets/artsy_web.png";
 import portfolio from "../../assets/portfolio.png";
 import artsyAndroid from "../../assets/artsy_android.png";
 import trafficImg from "../../assets/traffic_analysis.png";
-// import reactImg from "../..assets/react.png";
 import tensorflowImg from "../../assets/TL.png";
+import nlpImg from "../../assets/nlp.png";
 
 const projectData = [
   {
@@ -45,6 +45,13 @@ const projectData = [
     github: "https://github.com/kabrashrey/police_weather_data_analysis",
     description:
       "Analyzed 86,536 Rhode Island traffic stops (2005-2015) combined with weather data to identify demographic biases, temporal patterns, and environmental impacts on law enforcement outcomes using Python, pandas, and statistical analysis.",
+  },
+  {
+    title: "Mental Health Signal Detector",
+    image: nlpImg,
+    github: "https://github.com/kabrashrey/",
+    description:
+      "A real-time system to analyze short posts in online support groups, classifying them by intent and concern level, and highlight key phrases that drive predictions. Additionally, a lightweight retrieval-augmented generation (RAG) module produces brief, safe, contextually relevant suggestions. Benchmarking three models of increasing complexity and evaluate them on accuracy, calibration, latency, and suggestion relevance, providing a practical end-to-end pipeline for mental health support.",
   },
 ];
 

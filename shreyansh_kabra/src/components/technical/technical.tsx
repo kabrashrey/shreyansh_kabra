@@ -21,6 +21,7 @@ import {
 
 import { FaGit } from "react-icons/fa";
 import { DiNodejs } from "react-icons/di";
+import { GiBrain } from "react-icons/gi"; 
 
 const skills = [
   { name: "React", Icon: SiReact },
@@ -40,6 +41,7 @@ const skills = [
   { name: "Android", Icon: SiAndroid },
   { name: "TensorFlow", Icon: SiTensorflow },
   { name: "Keras", Icon: SiKeras },
+  { name: "NLP", Icon: GiBrain },
 ];
 
 const Technical: React.FC = () => {
