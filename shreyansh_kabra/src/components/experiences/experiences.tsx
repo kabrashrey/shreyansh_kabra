@@ -9,7 +9,8 @@ const experiences = [
     logo: hpeLogo,
     website: "https://www.hpe.com/",
     description:
-      "At HPE, I worked as a Cloud Developer, building APIs using Python, Django, and DRF for invoice management and contracts onboarding portals that integrated PostgreSQL and ServiceNow. I automated data workflows with Apache Airflow, built end-to-end API and UI components for a web-based notification system that improved communication efficiency by 80%, and contributed to the HPE GreenLake NaaS platform with cross-module REST API integrations. I also developed dynamic ITSM forms, reducing submission errors by over 50%, led mentoring sessions for junior developers, and collaborated with over 10 international cross-functional teams to ensure timely project delivery.",
+      "Engineered over 100 RESTful APIs using Python, Django, and DRF for the GreenLake edge-to-cloud platform, facilitating high-volume data synchronization between PostgreSQL and ServiceNow. Architected an asynchronous email notification system that improved throughput by 80% and reduced request latency. Additionally, optimized cross-module integrations for the Service Insights Portal and reduced submission errors by 50% through enhanced validation logic.",
+    // "At HPE, I worked as a Cloud Developer, building APIs using Python, Django, and DRF for invoice management and contracts onboarding portals that integrated PostgreSQL and ServiceNow. I automated data workflows with Apache Airflow, built end-to-end API and UI components for a web-based notification system that improved communication efficiency by 80%, and contributed to the HPE GreenLake NaaS platform with cross-module REST API integrations. I also developed dynamic ITSM forms, reducing submission errors by over 50%, led mentoring sessions for junior developers, and collaborated with over 10 international cross-functional teams to ensure timely project delivery.",
   },
   {
     company: "Hewlett Packard Enterprise",
@@ -18,7 +19,8 @@ const experiences = [
     logo: hpeLogo,
     website: "https://www.hpe.com/",
     description:
-      "During my internship at HPE in the NaaS team, I developed a Python package with async capabilities to automate switch and IAP configuration, eliminating 90% of manual setup time. I enhanced the troubleshooting workflow by reducing manual effort by 70% and improved execution speed through asynchronous patterns. I also created REST APIs to integrate ServiceNow with internal tooling, improving data exchange and operational efficiency by over 50%.",
+      "Developed an asynchronous Python package to automate network device calibration, eliminating over 90% of manual work and boosting system reliability at scale. Streamlined troubleshooting report generation and execution workflows, which reduced task completion time by 50% and overall manual effort by 70%.",
+    // "During my internship at HPE in the NaaS team, I developed a Python package with async capabilities to automate switch and IAP configuration, eliminating 90% of manual setup time. I enhanced the troubleshooting workflow by reducing manual effort by 70% and improved execution speed through asynchronous patterns. I also created REST APIs to integrate ServiceNow with internal tooling, improving data exchange and operational efficiency by over 50%.",
   },
 ];
 

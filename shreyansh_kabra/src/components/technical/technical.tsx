@@ -4,7 +4,7 @@ import "./technical.scss";
 import {
   SiReact,
   SiPython,
-  SiDocker,
+  SiCplusplus,
   SiPandas,
   SiNumpy,
   SiJavascript,
@@ -16,32 +16,42 @@ import {
   SiCss3,
   SiAndroid,
   SiTensorflow,
-  SiKeras
+  SiKeras,
+  SiHuggingface,
+  SiPostman,
+  SiGit
 } from "react-icons/si";
 
-import { FaGit } from "react-icons/fa";
+// import { FaGit } from "react-icons/fa";
 import { DiNodejs } from "react-icons/di";
 import { GiBrain } from "react-icons/gi"; 
 
 const skills = [
-  { name: "React", Icon: SiReact },
+  // Language
   { name: "Python", Icon: SiPython },
-  { name: "Docker", Icon: SiDocker },
-  { name: "Pandas", Icon: SiPandas },
-  { name: "NumPy", Icon: SiNumpy },
   { name: "JavaScript", Icon: SiJavascript },
+  { name: "C++", Icon: SiCplusplus },
+  // Web & Backend
+  { name: "React", Icon: SiReact },
   { name: "Node.js", Icon: DiNodejs },
   { name: "Django", Icon: SiDjango },
-  { name: "PostgreSQL", Icon: SiPostgresql },
-  { name: "MongoDB", Icon: SiMongodb },
-  { name: "Git", Icon: FaGit },
-  { name: "GCP", Icon: SiGooglecloud },
   { name: "HTML5", Icon: SiHtml5 },
   { name: "CSS3", Icon: SiCss3 },
-  { name: "Android", Icon: SiAndroid },
+  // Databases
+  { name: "PostgreSQL", Icon: SiPostgresql },
+  { name: "MongoDB", Icon: SiMongodb },
+  // AI / ML / Data Science
   { name: "TensorFlow", Icon: SiTensorflow },
   { name: "Keras", Icon: SiKeras },
+  { name: "Hugging Face", Icon: SiHuggingface },
   { name: "NLP", Icon: GiBrain },
+  { name: "Pandas", Icon: SiPandas },
+  { name: "NumPy", Icon: SiNumpy },
+  // Tools & Cloud
+  { name: "GCP", Icon: SiGooglecloud },
+  { name: "Git", Icon: SiGit },
+  { name: "Postman", Icon: SiPostman },
+  { name: "Android", Icon: SiAndroid },
 ];
 
 const Technical: React.FC = () => {

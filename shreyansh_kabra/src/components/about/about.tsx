@@ -11,35 +11,33 @@ const About = () => {
         <img src={profileImg} alt="Shreyansh Kabra" className="about-image" />
         <div className="about-text">
           <p>
-            I'm Shreyansh Kabra, a passionate software engineer currently
-            pursuing my M.S. in Computer Science at the University of Southern
-            California, Los Angeles. I completed my B.Tech in Computer Science
-            and Engineering in 2022 from JECRC University, Jaipur.
+            I'm Shreyansh Kabra, a software engineer currently pursuing my M.S.
+            in Computer Science at the University of Southern California (USC).
+            I specialize in building scalable backend systems and applying
+            advanced AI/ML techniques to solve complex data problems.
           </p>
 
           <p>
-            I spent over 2.5 years at Hewlett Packard Enterprise (HPE) as a
-            Cloud Engineer, where I built automation pipelines, developed REST
-            APIs, and contributed extensively on both backend and frontend
-            development using Python (Django), React.js, HTML5, CSS3, and
-            managed databases via PgAdmin and psql. My role also involved
-            mentoring junior developers and collaborating with international
-            teams across the US and India.
+            Previously, I served as a Cloud Developer at Hewlett Packard
+            Enterprise (HPE) for over 2 years. There, I engineered 100+ RESTful
+            APIs for the GreenLake edge-to-cloud platform and architected
+            asynchronous notification systems that improved throughput by 80%.
+            My role involved microservices
+            architecture, and high-volume data synchronization between
+            PostgreSQL and ServiceNow.
           </p>
 
           <p>
-            Prior to that, I interned at HPE as an R&D Intern, where I focused
-            on developing Python-based automation scripts for switch and IAP
-            troubleshooting using regex. I also worked with ServiceNow during
-            this time and later earned the Certified ServiceNow System
-            Administrator (CSA) certification.
+            Beyond traditional software engineering, I am deeply invested in
+            Natural Language Processing and Generative AI. My recent work
+            includes developing hierarchical NLP frameworks and
+            Retrieval-Augmented Generation (RAG) systems using tools like
+            LangChain, FAISS, and LoRA to fine-tune Large Language Models.
           </p>
 
           <p>
-            My interests span across Artificial Intelligence, Machine Learning,
-            and Full-Stack Web Development, and I am driven by the challenge of
-            solving real-world problems through innovative and efficient
-            solutions.
+            I am driven by the challenge of bridging the gap between robust
+            distributed systems and intelligent AI solutions.
           </p>
           <a
             href={resume}
