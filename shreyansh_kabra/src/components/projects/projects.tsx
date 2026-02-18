@@ -33,7 +33,7 @@ const projectData = [
     github: "https://github.com/kabrashrey/shreyansh_kabra",
     description:
       "Personal portfolio built with React, TypeScript, and Vite. Dark/light mode, responsive layout, and optimized loading.",
-    techStack: ["React", "TypeScript", "Vite", "SCSS"],
+    techStack: ["React", "TypeScript", "SCSS"],
   },
   {
     title: "Image Classification – Transfer Learning",
@@ -58,7 +58,7 @@ const projectData = [
     github: "https://github.com/kabrashrey/",
     description:
       "Real-time NLP system classifying support group posts by intent and concern level, with a lightweight RAG module for suggestions.",
-    techStack: ["Python", "NLP", "RAG", "LangChain", "Transformers"],
+    techStack: ["Python", "NLP", "RAG", "Transformers"],
   },
 ];
 

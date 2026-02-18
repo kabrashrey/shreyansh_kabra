@@ -9,7 +9,8 @@ const educationData = [
     college: "University of Southern California",
     degree: "M.S. in Computer Science",
     years: "2025 – 2026 (Expected)",
-    coursework: "Analysis of Algorithms, NLP, Deep Learning, Web Technologies",
+    coursework:
+      "Analysis of Algorithms, NLP, Deep Learning, Web Technologies, Database Systems, Machine Learning",
     website: "https://www.usc.edu/",
   },
   {
@@ -18,7 +19,7 @@ const educationData = [
     degree: "B.Tech in Computer Science & Engineering",
     years: "2018 – 2022",
     coursework:
-      "Data Structures, OS, DBMS, Machine Learning, Computer Networks",
+      "Data Structures, DBMS, Machine Learning, Programming Languages",
     website: "https://www.jecrcuniversity.edu.in/",
   },
 ];

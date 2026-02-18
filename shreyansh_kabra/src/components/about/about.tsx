@@ -25,14 +25,14 @@ const About = () => {
           <p>
             Previously at <strong>Hewlett Packard Enterprise</strong> for 2+
             years, I engineered 100+ RESTful APIs for GreenLake edge-to-cloud
-            platform and architected systems that improved throughput by 80%.
+            platform and architected systems that improved operational
+            efficiency by 80%.
           </p>
 
           <p>
             My current work spans <strong>NLP</strong>,{" "}
             <strong>Generative AI</strong>, and <strong>RAG systems</strong> —
-            building with LangChain, FAISS, and LoRA to fine-tune Large Language
-            Models.
+            building with FAISS, and LoRA to fine-tune Large Language Models.
           </p>
         </div>
       </div>

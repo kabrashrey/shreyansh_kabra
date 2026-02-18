@@ -11,7 +11,7 @@ const experiences = [
     website: "https://www.hpe.com/",
     highlights: [
       "Engineered 100+ RESTful APIs using Python, Django, and DRF for the GreenLake edge-to-cloud platform",
-      "Architected async email notification system — improved throughput by 80% and reduced request latency",
+      "Architected async email notification system — improved operational efficiency by 80% and reduced request latency",
       "Enabled high-volume data sync between PostgreSQL and ServiceNow",
       "Optimized cross-module integrations for Service Insights Portal — reduced submission errors by 50%",
     ],
@@ -22,6 +22,7 @@ const experiences = [
       "PostgreSQL",
       "ServiceNow",
       "REST APIs",
+      "React",
     ],
   },
   {
