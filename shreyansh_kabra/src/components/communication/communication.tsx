@@ -1,6 +1,5 @@
 import "./communication.scss";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
-import { SiLeetcode } from "react-icons/si";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 const socialLinks = [
