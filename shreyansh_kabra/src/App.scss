@@ -30,18 +30,24 @@ body {
 
 /* CSS Variables for theme */
 :root {
-  --primary: #2563eb; /* Blue */
+  --primary: #2563eb;
   --primary-light: #3b82f6;
-  --accent: #fb7185; /* Pinkish accent */
-  --accent-dark: #f43f5e;
+  --accent: #f472b6;
+  --accent-dark: #ec4899;
   --light: #fafbfc;
   --dark: #1e293b;
   --gray-light: #f1f5f9;
   --gray-dark: #64748b;
   --card-bg: #ffffff;
-  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  --card-shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.1);
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  --card-shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.1);
   --border-subtle: rgba(0, 0, 0, 0.06);
+  --section-alt: #f0f4f8;
+  --gradient-subtle: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.03),
+    rgba(244, 114, 182, 0.03)
+  );
 }
 
 /* Dark Mode */
@@ -55,9 +61,15 @@ body.dark-mode {
   --gray-light: #1e293b;
   --gray-dark: #94a3b8;
   --card-bg: #1e293b;
-  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  --card-shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.4);
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.45);
   --border-subtle: rgba(255, 255, 255, 0.06);
+  --section-alt: #111827;
+  --gradient-subtle: linear-gradient(
+    135deg,
+    rgba(96, 165, 250, 0.04),
+    rgba(244, 114, 182, 0.04)
+  );
 
   background-color: var(--light);
   color: var(--dark);
@@ -68,13 +80,13 @@ section {
   scroll-margin-top: 80px;
 }
 
-/* Section heading style - consistent underline */
+/* Section heading style */
 .section-heading {
   font-size: 2.2rem;
   font-weight: 800;
   text-align: center;
   color: var(--dark);
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   position: relative;
   letter-spacing: -0.02em;
 
@@ -84,7 +96,7 @@ section {
     width: 3rem;
     height: 4px;
     background: linear-gradient(to right, var(--primary), var(--accent));
-    margin: 0.6em auto 0;
+    margin: 0.5em auto 0;
     border-radius: 2px;
   }
 }
@@ -96,7 +108,7 @@ section {
     &::after {
       width: 2.5rem;
       height: 3px;
-      margin-top: 0.5em;
+      margin-top: 0.4em;
     }
   }
 }
@@ -150,13 +162,11 @@ a.btn {
 .text-center {
   text-align: center !important;
 }
-
 .flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .margin-auto {
   margin-left: auto;
   margin-right: auto;
@@ -174,10 +184,10 @@ a.btn {
 /* ========== Scroll Animation Utilities ========== */
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(24px);
   transition:
-    opacity 0.7s ease-out,
-    transform 0.7s ease-out;
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
 }
 
 .animate-on-scroll.visible {
@@ -188,10 +198,10 @@ a.btn {
 /* Staggered children animation */
 .stagger-children .animate-child {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(16px);
   transition:
-    opacity 0.5s ease-out,
-    transform 0.5s ease-out;
+    opacity 0.45s ease-out,
+    transform 0.45s ease-out;
 }
 
 .stagger-children.visible .animate-child {
@@ -199,31 +209,43 @@ a.btn {
   transform: translateY(0);
 }
 
-/* Generate stagger delays for up to 20 children */
 @for $i from 1 through 20 {
   .stagger-children.visible .animate-child:nth-child(#{$i}) {
     transition-delay: #{$i * 0.06}s;
   }
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
+/* ========== Section Separator ========== */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border-subtle) 20%,
+    var(--primary) 50%,
+    var(--border-subtle) 80%,
+    transparent
+  );
+  opacity: 0.4;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
 ::-webkit-scrollbar-track {
   background: var(--gray-light);
 }
-
 ::-webkit-scrollbar-thumb {
   background: var(--gray-dark);
-  border-radius: 4px;
-
+  border-radius: 3px;
   &:hover {
     background: var(--primary);
   }
 }
-
 body.dark-mode ::-webkit-scrollbar-thumb {
   background: var(--accent);
 }

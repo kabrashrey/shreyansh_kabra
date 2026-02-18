@@ -1,6 +1,7 @@
 .experience-section {
   padding: 5rem 1rem 4rem;
   background-color: var(--light);
+  background-image: var(--gradient-subtle);
   scroll-margin-top: 80px;
 }
 
@@ -8,12 +9,11 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  max-width: 800px;
+  max-width: 780px;
   margin: 0 auto;
   position: relative;
   padding-left: 2.5rem;
 
-  /* Vertical timeline line */
   &::before {
     content: "";
     position: absolute;
@@ -31,8 +31,7 @@
   display: block;
   text-decoration: none;
   color: inherit;
-  margin-bottom: 2rem;
-  cursor: pointer;
+  margin-bottom: 1.5rem;
 
   &:last-child {
     margin-bottom: 0;
@@ -57,7 +56,7 @@
   background: var(--accent);
   box-shadow:
     0 0 0 2px var(--accent),
-    0 0 12px rgba(251, 113, 133, 0.4);
+    0 0 16px rgba(244, 114, 182, 0.4);
   transform: scale(1.3);
 }
 
@@ -65,13 +64,32 @@
   background: var(--card-bg);
   border: 1px solid var(--border-subtle);
   padding: 1.5rem;
-  border-radius: 12px;
+  border-radius: 14px;
   box-shadow: var(--card-shadow);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  /* Subtle left accent */
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--primary), var(--accent));
+    border-radius: 3px 0 0 3px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 
   &:hover {
     box-shadow: var(--card-shadow-hover);
     transform: translateY(-3px);
+    &::before {
+      opacity: 1;
+    }
   }
 }
 
@@ -82,28 +100,30 @@
   margin-bottom: 1rem;
 
   img {
-    width: 52px;
-    height: 52px;
+    width: 50px;
+    height: 50px;
     object-fit: contain;
     border-radius: 10px;
     border: 1px solid var(--border-subtle);
+    background: var(--light);
+    padding: 4px;
   }
 
   h3 {
-    font-size: 1.15rem;
+    font-size: 1.12rem;
     font-weight: 700;
     color: var(--dark);
-    margin-bottom: 0.15rem;
+    margin-bottom: 0.1rem;
   }
 
   .company {
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.93rem;
     color: var(--primary);
   }
 
   .duration {
-    font-size: 0.85rem;
+    font-size: 0.83rem;
     color: var(--gray-dark);
     margin-top: 0.1rem;
   }
@@ -117,8 +137,8 @@
   li {
     position: relative;
     padding-left: 1.25rem;
-    margin-bottom: 0.5rem;
-    font-size: 0.92rem;
+    margin-bottom: 0.45rem;
+    font-size: 0.9rem;
     line-height: 1.6;
     color: var(--gray-dark);
 
@@ -128,7 +148,6 @@
       left: 0;
       color: var(--primary);
       font-weight: bold;
-      font-size: 0.9rem;
     }
 
     &:last-child {
@@ -140,48 +159,41 @@
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .tag {
   display: inline-block;
-  padding: 0.2rem 0.65rem;
+  padding: 0.18rem 0.6rem;
   background: var(--gray-light);
   color: var(--primary);
   border-radius: 50px;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.01em;
   border: 1px solid var(--border-subtle);
+  transition: all 0.2s ease;
 }
 
 @media (max-width: 768px) {
   .timeline-wrapper {
     padding-left: 2rem;
-
     &::before {
       left: 0.5rem;
     }
   }
-
   .timeline-dot {
     left: -1.85rem;
   }
-
   .experience-card {
     padding: 1.25rem;
   }
-
   .card-header {
     flex-direction: column;
-    align-items: flex-start;
     gap: 0.75rem;
-
     img {
       width: 44px;
       height: 44px;
     }
-
     h3 {
       font-size: 1.05rem;
     }
