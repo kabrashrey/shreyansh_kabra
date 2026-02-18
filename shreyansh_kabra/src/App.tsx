@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import "./App.scss";
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
+import Hero from "./components/hero/hero";
 import About from "./components/about/about";
 
 // Lazy loading components to optimize performance
@@ -20,6 +21,7 @@ function App() {
     <div>
       <Navbar />
       <main className="content">
+        <Hero />
         <About />
 
         <Suspense fallback={null}>

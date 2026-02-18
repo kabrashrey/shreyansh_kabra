@@ -1,22 +1,18 @@
 .footer {
   text-align: center;
-  padding: 1rem 1rem;
-  font-size: 0.95rem;
-  color: #666;
-  background-color: #f1f1f1;
-  border-top: 1px solid #ccc;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 1.5rem 1rem;
+  font-size: 0.85rem;
+  color: var(--gray-dark);
+  background-color: var(--gray-light);
+  border-top: 1px solid var(--border-subtle);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 
-  // Dark mode support
-  body.dark-mode & {
-    background-color: #1e1e1e;
-    color: #aaa;
-    border-top: 1px solid #333;
-  }
-
-  // Responsive
   @media (max-width: 600px) {
-    font-size: 0.85rem;
-    padding: 1.5rem 0.5rem;
+    font-size: 0.8rem;
+    padding: 1.25rem 0.5rem;
   }
 }

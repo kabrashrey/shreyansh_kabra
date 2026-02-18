@@ -1,65 +1,76 @@
 .communication-section {
-  padding: 4rem 1rem;
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-  color: var(--dark);
+  padding: 5rem 1rem 4rem;
   background-color: var(--light);
-  scroll-margin-top: 100px;
-
-  .subheading {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    color: #475569;
-  }
-
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 2.5rem;
-    font-size: 2.5rem;
-    color: var(--primary);
-
-    a {
-      transition: color 0.3s ease;
-
-      &:hover,
-      &:focus {
-        color: var(--accent);
-      }
-    }
-  }
+  color: var(--dark);
+  scroll-margin-top: 80px;
 }
 
-/* Dark mode */
-body.dark-mode {
-  .communication-section {
-    background-color: #1e1e1e;
-    color: #f1f5f9;
+.contact-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
 
-    .subheading {
-      color: #cbd5e1;
-    }
+.subheading {
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+  color: var(--gray-dark);
+  line-height: 1.6;
+}
 
-    .social-links {
-      color: var(--primary);
+.email-display {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  letter-spacing: 0.01em;
+}
 
-      a:hover,
-      a:focus {
-        color: var(--accent);
-      }
-    }
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.social-link-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--card-shadow);
+  font-size: 1.3rem;
+  color: var(--dark);
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  .link-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  &:hover {
+    color: var(--hover-color, var(--primary));
+    border-color: var(--hover-color, var(--primary));
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow-hover);
   }
 }
 
 /* Mobile responsiveness */
 @media (max-width: 480px) {
-  .communication-section {
-    padding: 3rem 1rem;
+  .social-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
 
-    .social-links {
-      gap: 1.5rem;
-      font-size: 2rem;
-    }
+  .social-link-item {
+    width: 100%;
+    max-width: 260px;
+    justify-content: center;
   }
 }

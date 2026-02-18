@@ -1,17 +1,13 @@
 .education-section {
-  padding: 4rem 1rem;
+  padding: 5rem 1rem 4rem;
   background-color: var(--light);
   color: var(--dark);
-  scroll-margin-top: 100px;
-
-  h2 {
-    margin-bottom: 3rem;
-  }
+  scroll-margin-top: 80px;
 
   .education-wrapper {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.75rem;
     max-width: 900px;
     margin: 0 auto;
     flex-wrap: wrap;
@@ -21,60 +17,81 @@
     text-decoration: none;
     color: inherit;
     display: block;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-
-    &:hover {
-      transform: translateY(-5px);
-    }
-
-    &:hover .education-card {
-      transform: none;
-    }
+    flex: 1;
+    min-width: 300px;
+    max-width: 420px;
   }
 
   .education-card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
-    width: 320px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    box-shadow: var(--card-shadow);
     padding: 2rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    /* Colored top accent bar */
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+    }
 
     img {
-      width: 150px;
-      height: 80px;
+      width: 140px;
+      height: 75px;
       object-fit: contain;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .education-details {
       h3 {
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
-        color: var(--primary);
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+        color: var(--dark);
       }
 
-      .degree,
-      .branch,
-      .years {
-        color: var(--dark);
-        font-weight: 500;
+      .degree {
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 0.95rem;
         margin-bottom: 0.3rem;
       }
 
       .years {
         font-style: italic;
         color: var(--gray-dark);
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .coursework {
+        font-size: 0.82rem;
+        line-height: 1.5;
+        color: var(--gray-dark);
+      }
+
+      .coursework-label {
+        font-weight: 700;
+        color: var(--dark);
       }
     }
 
     &:hover {
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--card-shadow-hover);
+      transform: translateY(-4px);
     }
   }
 
@@ -83,42 +100,14 @@
     .education-wrapper {
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
     }
-
-    .education-card {
-      width: 90%;
-      padding: 1.5rem 1rem;
-    }
-  }
-
-  /* Dark mode */
-  body.dark-mode & {
-    background-color: #1e1e1e;
-    color: #f1f5f9;
 
     .education-card-link {
-      color: inherit;
+      max-width: 100%;
     }
 
     .education-card {
-      background-color: #2b2b2b;
-      color: #f1f5f9;
-
-      .education-details {
-        h3 {
-          color: var(--primary);
-        }
-
-        .degree,
-        .branch {
-          color: #e0e0e0;
-        }
-
-        .years {
-          color: #a1a1aa;
-        }
-      }
+      padding: 1.5rem 1rem;
     }
   }
 }

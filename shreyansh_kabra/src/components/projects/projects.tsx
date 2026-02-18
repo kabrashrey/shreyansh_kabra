@@ -1,6 +1,7 @@
 import { FaGithub } from "react-icons/fa";
-// import { FiExternalLink } from "react-icons/fi";
+import { FiExternalLink } from "react-icons/fi";
 import "./projects.scss";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 import artsyWeb from "../../assets/artsy_web.png";
 import portfolio from "../../assets/portfolio.png";
@@ -15,21 +16,24 @@ const projectData = [
     image: artsyWeb,
     github: "https://github.com/kabrashrey/artsy-search",
     description:
-      "Developed a full-stack web application using React.js and Node.js (Express) that integrates the Artsy API to explore over 100,000 artists and artworks. Implemented JWT-based authentication, structured MongoDB collections for users and catalog, and deployed on Google Cloud App Engine with perfect Lighthouse scores for mobile and desktop.",
+      "Full-stack app integrating Artsy API to explore 100K+ artists. JWT auth, MongoDB, deployed on GCP with perfect Lighthouse scores.",
+    techStack: ["React", "Node.js", "Express", "MongoDB", "GCP"],
   },
   {
     title: "Artist Search – Android App",
     image: artsyAndroid,
     github: "https://github.com/kabrashrey/artsy-mobile-app",
     description:
-      "Created a native Android application using Kotlin and Android SDK with a Node.js backend to access Artsy’s database. Secured with token-based authentication and persisted data using MongoDB, offering mobile users a seamless search and discovery experience.",
+      "Native Android app with Kotlin and Node.js backend for Artsy's database. Token-based auth and MongoDB persistence.",
+    techStack: ["Kotlin", "Android SDK", "Node.js", "MongoDB"],
   },
   {
     title: "Portfolio Website",
     image: portfolio,
     github: "https://github.com/kabrashrey/shreyansh_kabra",
     description:
-      "Designed and built a personal portfolio using React, TypeScript, and Vite. Includes dark/light mode toggle, responsive layout, modular components, and performance-optimized loading for smooth UX across devices.",
+      "Personal portfolio built with React, TypeScript, and Vite. Dark/light mode, responsive layout, and optimized loading.",
+    techStack: ["React", "TypeScript", "Vite", "SCSS"],
   },
   {
     title: "Image Classification – Transfer Learning",
@@ -37,61 +41,68 @@ const projectData = [
     github:
       "https://github.com/kabrashrey/Image-Classification-Transfer-Learning",
     description:
-      "Implemented an image classification model using transfer learning techniques with TensorFlow and Keras. Fine-tuned a pre-trained model on a custom dataset of artworks, achieving high accuracy and demonstrating the effectiveness of transfer learning in the art domain.",
+      "Image classification using transfer learning with TensorFlow/Keras. Fine-tuned pre-trained model on custom artwork dataset.",
+    techStack: ["Python", "TensorFlow", "Keras", "Transfer Learning"],
   },
   {
-    title: "Police Activity and Weather Data Analysis",
+    title: "Police Activity & Weather Analysis",
     image: trafficImg,
     github: "https://github.com/kabrashrey/police_weather_data_analysis",
     description:
-      "Analyzed 86,536 Rhode Island traffic stops (2005-2015) combined with weather data to identify demographic biases, temporal patterns, and environmental impacts on law enforcement outcomes using Python, pandas, and statistical analysis.",
+      "Analyzed 86K+ RI traffic stops with weather data to identify biases and temporal patterns using statistical analysis.",
+    techStack: ["Python", "Pandas", "NumPy", "Data Analysis"],
   },
   {
     title: "Mental Health Signal Detector",
     image: nlpImg,
     github: "https://github.com/kabrashrey/",
     description:
-      "A real-time system to analyze short posts in online support groups, classifying them by intent and concern level, and highlight key phrases that drive predictions. Additionally, a lightweight retrieval-augmented generation (RAG) module produces brief, safe, contextually relevant suggestions. Benchmarking three models of increasing complexity and evaluate them on accuracy, calibration, latency, and suggestion relevance, providing a practical end-to-end pipeline for mental health support.",
+      "Real-time NLP system classifying support group posts by intent and concern level, with a lightweight RAG module for suggestions.",
+    techStack: ["Python", "NLP", "RAG", "LangChain", "Transformers"],
   },
 ];
 
 const Projects = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
     <section className="projects-section" id="projects">
-      <h2 className="section-heading">Personal Projects</h2>
-      <div className="projects-grid">
+      <h2 className="section-heading">Projects</h2>
+      <div
+        ref={ref}
+        className={`projects-grid stagger-children ${isVisible ? "visible" : ""}`}
+      >
         {projectData.map((proj, index) => (
           <a
             href={proj.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="project-card-link"
+            className="project-card-link animate-child"
             key={index}
           >
             <div className="project-card">
               <div className="project-img">
                 <img src={proj.image} alt={proj.title} loading="lazy" />
+                <div className="img-overlay">
+                  <span className="overlay-text">
+                    <FiExternalLink /> View Project
+                  </span>
+                </div>
               </div>
 
               <div className="project-content">
                 <h3>{proj.title}</h3>
                 <p className="description">{proj.description}</p>
-                <div className="project-icons">
-                  <span title="GitHub Repo">
-                    <FaGithub />
-                  </span>
-                  {/* {proj?.live && (
-                    <a
-                      href={proj?.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="visit-site"
-                      title="Live Site"
-                    >
-                      <FiExternalLink className="external-icon" />
-                      Visit Site
-                    </a>
-                  )} */}
+                <div className="project-tags">
+                  {proj.techStack.map((tech, i) => (
+                    <span className="tag" key={i}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <div className="project-link">
+                  <FaGithub />
+                  <span>View Code</span>
                 </div>
               </div>
             </div>
