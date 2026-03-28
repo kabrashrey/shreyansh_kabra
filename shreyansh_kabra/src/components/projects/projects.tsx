@@ -55,10 +55,24 @@ const projectData = [
   {
     title: "Mental Health Signal Detector",
     image: nlpImg,
-    github: "https://github.com/kabrashrey/",
+    github: "https://github.com/Gaurav-Zanpure/group-23-mh-signals",
     description:
       "Real-time NLP system classifying support group posts by intent and concern level, with a lightweight RAG module for suggestions.",
     techStack: ["Python", "NLP", "RAG", "Transformers"],
+  },
+  {
+    title: "Evidence based RAG for Hallucination-Resistant Multihop Q&A",
+    image: nlpImg,
+    github:
+      "https://github.com/kabrashrey/hallucination_resistant_multihop_qna",
+    description:
+      "Evidence-based RAG system for multihop question answering, RAG module for suggestions.",
+    techStack: [
+      "Deep Learning",
+      "LLM",
+      "Vector Database",
+      "Prompt Engineering",
+    ],
   },
 ];
 
