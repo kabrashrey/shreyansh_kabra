@@ -9,6 +9,7 @@ import artsyAndroid from "../../assets/artsy_android.png";
 import trafficImg from "../../assets/traffic_analysis.png";
 import tensorflowImg from "../../assets/TL.png";
 import nlpImg from "../../assets/nlp.png";
+import dlImg from "../../assets/multi_hop.png";
 
 const projectData = [
   {
@@ -62,7 +63,7 @@ const projectData = [
   },
   {
     title: "Evidence based RAG for Hallucination-Resistant Multihop Q&A",
-    image: nlpImg,
+    image: dlImg,
     github:
       "https://github.com/kabrashrey/hallucination_resistant_multihop_qna",
     description:
