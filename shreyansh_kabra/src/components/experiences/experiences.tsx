@@ -1,8 +1,18 @@
 import "./experiences.scss";
 import hpeLogo from "../../assets/hpe.jpeg";
+import amazonLogo from "../../assets/aws.png";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 const experiences = [
+  {
+    company: "Amazon",
+    role: "SDE Intern (Summer)",
+    duration: "May 2026 – Present",
+    logo: amazonLogo,
+    website: "https://www.amazon.com/",
+    highlights: [],
+    techStack: [],
+  },
   {
     company: "Hewlett Packard Enterprise",
     role: "Cloud Developer 1",
@@ -72,18 +82,22 @@ const Experiences = () => {
                   <p className="duration">{exp.duration}</p>
                 </div>
               </div>
-              <ul className="highlights">
-                {exp.highlights.map((highlight, i) => (
-                  <li key={i}>{highlight}</li>
-                ))}
-              </ul>
-              <div className="tech-tags">
-                {exp.techStack.map((tech, i) => (
-                  <span className="tag" key={i}>
-                    {tech}
-                  </span>
-                ))}
-              </div>
+              {exp.highlights.length > 0 && (
+                <ul className="highlights">
+                  {exp.highlights.map((highlight, i) => (
+                    <li key={i}>{highlight}</li>
+                  ))}
+                </ul>
+              )}
+              {exp.techStack.length > 0 && (
+                <div className="tech-tags">
+                  {exp.techStack.map((tech, i) => (
+                    <span className="tag" key={i}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </a>
         ))}

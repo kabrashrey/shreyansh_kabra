@@ -61,6 +61,8 @@ const skillCategories = [
       { name: "NLP", Icon: GiBrain },
       { name: "Pandas", Icon: SiPandas },
       { name: "NumPy", Icon: SiNumpy },
+      { name: "PyTorch" },
+      { name: "RAG" },
     ],
   },
   {
@@ -90,7 +92,7 @@ const Technical: React.FC = () => {
             <div className="skills-row">
               {cat.skills.map(({ name, Icon }, i) => (
                 <div className="skill-card" key={i}>
-                  <Icon className="skill-icon" />
+                  {Icon && <Icon className="skill-icon" />}
                   <span>{name}</span>
                 </div>
               ))}
