@@ -5,7 +5,7 @@ import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 const experiences = [
   {
-    company: "Amazon",
+    company: "Amazon Web Services",
     role: "SDE Intern (Summer)",
     duration: "May 2026 – Present",
     logo: amazonLogo,
