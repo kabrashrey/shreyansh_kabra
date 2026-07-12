@@ -21,6 +21,10 @@ import {
   SiHuggingface,
   SiPostman,
   SiGit,
+  SiRedis,
+  SiAmazonwebservices,
+  SiTypescript,
+  SiAmazondynamodb,
 } from "react-icons/si";
 
 import { DiNodejs } from "react-icons/di";
@@ -32,6 +36,7 @@ const skillCategories = [
     skills: [
       { name: "Python", Icon: SiPython },
       { name: "JavaScript", Icon: SiJavascript },
+      { name: "TypeScript", Icon: SiTypescript },
       { name: "C++", Icon: SiCplusplus },
     ],
   },
@@ -50,6 +55,8 @@ const skillCategories = [
     skills: [
       { name: "PostgreSQL", Icon: SiPostgresql },
       { name: "MongoDB", Icon: SiMongodb },
+      { name: "Redis", Icon: SiRedis },
+      { name: "DynamoDB", Icon: SiAmazondynamodb },
     ],
   },
   {
@@ -68,6 +75,7 @@ const skillCategories = [
   {
     category: "Tools & Cloud",
     skills: [
+      { name: "AWS", Icon: SiAmazonwebservices },
       { name: "GCP", Icon: SiGooglecloud },
       { name: "Git", Icon: SiGit },
       { name: "Postman", Icon: SiPostman },
