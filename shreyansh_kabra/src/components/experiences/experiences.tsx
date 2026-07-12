@@ -1,6 +1,7 @@
 import "./experiences.scss";
 import hpeLogo from "../../assets/hpe.jpeg";
 import amazonLogo from "../../assets/aws.png";
+import { FiArrowUpRight } from "react-icons/fi";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 const experiences = [
@@ -11,7 +12,7 @@ const experiences = [
     logo: amazonLogo,
     website: "https://www.amazon.com/",
     highlights: [
-      "Designed a distributed L2 cache layer (ElastiCache Serverless Redis) beneath a per-host in-memory L1 (Caffeine) cache for Amazon Connect's agent-routing service, cutting redundant downstream traffic by 90\% (118K to 12K fetches per cycle) across a 591-host fleet.",
+      "Designed a distributed L2 cache layer (ElastiCache Serverless Redis) beneath a per-host in-memory L1 (Caffeine) cache for Amazon Connect's agent-routing service, cutting redundant downstream traffic by 90% (118K to 12K fetches per cycle) across a 591-host fleet.",
       "Implemented a read-through client (Lettuce) with a 100ms command timeout, TTL-based freshness write-back, and empty-result guard, sustaining single-digit-millisecond p99 latency and graceful fallback when the cache is unavailable.",
       "Gated the launch behind a DynamoDB-backed dynamic feature flag with CloudWatch hit/miss/stale observability, enabling an instant kill switch and sub-60s rollback.",
       "Validated the rollout with unit and integration tests, enabling a zero-downtime, controlled release."
@@ -67,52 +68,69 @@ const Experiences = () => {
 
   return (
     <section className="experience-section" id="experiences">
-      <h2 className="section-heading">Experience</h2>
-      <div
-        ref={ref}
-        className={`timeline-wrapper stagger-children ${isVisible ? "visible" : ""}`}
-      >
-        {experiences.map((exp, index) => (
-          <a
-            href={exp.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="timeline-item animate-child"
-            key={index}
-          >
-            <div className="timeline-dot" />
-            <div className="experience-card">
-              <div className="card-header">
-                <img
-                  src={exp.logo}
-                  alt={`${exp.company} logo`}
-                  loading="lazy"
-                />
-                <div>
-                  <h3>{exp.role}</h3>
-                  <p className="company">{exp.company}</p>
-                  <p className="duration">{exp.duration}</p>
+      <div className="experience-container">
+        <h2 className="section-heading" data-index="01">
+          Experience
+        </h2>
+        <div
+          ref={ref}
+          className={`experience-list stagger-children ${isVisible ? "visible" : ""}`}
+        >
+          {experiences.map((exp, index) => (
+            <article className="exp-row animate-child" data-spotlight key={index}>
+              <div className="exp-header">
+                <a
+                  href={exp.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="exp-company-link"
+                  aria-label={`${exp.company} website`}
+                >
+                  <img
+                    src={exp.logo}
+                    alt={`${exp.company} logo`}
+                    loading="lazy"
+                  />
+                </a>
+
+                <div className="exp-header-text">
+                  <h3 className="exp-role">{exp.role}</h3>
+                  <a
+                    href={exp.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="exp-company"
+                  >
+                    {exp.company}
+                    <FiArrowUpRight />
+                  </a>
                 </div>
+
+                <span className="exp-date">{exp.duration}</span>
               </div>
-              {exp.highlights.length > 0 && (
-                <ul className="highlights">
-                  {exp.highlights.map((highlight, i) => (
-                    <li key={i}>{highlight}</li>
-                  ))}
-                </ul>
-              )}
-              {exp.techStack.length > 0 && (
-                <div className="tech-tags">
-                  {exp.techStack.map((tech, i) => (
-                    <span className="tag" key={i}>
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
-          </a>
-        ))}
+
+              <div className="exp-body">
+                {exp.highlights.length > 0 && (
+                  <ul className="exp-highlights">
+                    {exp.highlights.map((highlight, i) => (
+                      <li key={i}>{highlight}</li>
+                    ))}
+                  </ul>
+                )}
+
+                {exp.techStack.length > 0 && (
+                  <div className="exp-tags">
+                    {exp.techStack.map((tech, i) => (
+                      <span className="tag" key={i}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

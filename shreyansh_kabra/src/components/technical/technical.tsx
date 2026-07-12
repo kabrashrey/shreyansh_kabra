@@ -25,6 +25,8 @@ import {
   SiAmazonwebservices,
   SiTypescript,
   SiAmazondynamodb,
+  SiClaude,
+  SiOllama,
 } from "react-icons/si";
 
 import { DiNodejs } from "react-icons/di";
@@ -80,6 +82,9 @@ const skillCategories = [
       { name: "Git", Icon: SiGit },
       { name: "Postman", Icon: SiPostman },
       { name: "Android", Icon: SiAndroid },
+      { name: "Claude Code", Icon: SiClaude },
+      { name: "AWS Kiro", Icon: SiAmazonwebservices },
+      { name: "Ollama", Icon: SiOllama },
     ],
   },
 ];
@@ -89,13 +94,15 @@ const Technical: React.FC = () => {
 
   return (
     <section className="technical-section" id="technical">
-      <h2 className="section-heading">Technical Skills</h2>
+      <h2 className="section-heading" data-index="03">
+        Technical Skills
+      </h2>
       <div
         ref={ref}
         className={`skills-container stagger-children ${isVisible ? "visible" : ""}`}
       >
         {skillCategories.map((cat, idx) => (
-          <div className="skill-category animate-child" key={idx}>
+          <div className="skill-category animate-child" data-spotlight key={idx}>
             <h3 className="category-label">{cat.category}</h3>
             <div className="skills-row">
               {cat.skills.map(({ name, Icon }, i) => (

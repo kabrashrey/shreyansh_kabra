@@ -1,14 +1,21 @@
 .education-section {
-  padding: 5rem 1rem 4rem;
-  background-color: var(--section-alt);
+  padding: var(--space-section) 1.5rem;
+  background-color: var(--surface-2);
+  backdrop-filter: blur(6px);
   scroll-margin-top: 80px;
+
+  .section-heading {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .education-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
-  max-width: 900px;
+  max-width: 780px;
   margin: 0 auto;
 }
 
@@ -21,7 +28,7 @@
 .education-card {
   background: var(--card-bg);
   border: 1px solid var(--border-subtle);
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--card-shadow);
   display: flex;
@@ -46,11 +53,13 @@
 
   /* University logo */
   > img {
-    width: 100%;
-    max-height: 160px;
+    width: auto;
+    max-width: 60%;
+    max-height: 72px;
     object-fit: contain;
-    padding: 1rem 1.5rem 0;
+    padding: 1.25rem 1.5rem 0;
     background: var(--card-bg);
+    align-self: flex-start;
   }
 }
 
