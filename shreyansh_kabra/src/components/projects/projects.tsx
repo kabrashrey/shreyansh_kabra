@@ -1,17 +1,18 @@
-import { FaGithub } from "react-icons/fa";
+import { useState } from "react";
 import { FiExternalLink } from "react-icons/fi";
 import "./projects.scss";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+import ProjectModal, { type Project } from "./ProjectModal";
 
 import artsyWeb from "../../assets/artsy_web.png";
-import portfolio from "../../assets/portfolio.png";
+import portfolio from "../../assets/portfolio.webp";
 import artsyAndroid from "../../assets/artsy_android.png";
-import trafficImg from "../../assets/traffic_analysis.png";
-import tensorflowImg from "../../assets/TL.png";
-import nlpImg from "../../assets/nlp.png";
-import dlImg from "../../assets/multi_hop.png";
+import trafficImg from "../../assets/traffic_analysis.webp";
+import tensorflowImg from "../../assets/TL.webp";
+import nlpImg from "../../assets/nlp.webp";
+import dlImg from "../../assets/multi_hop.webp";
 
-const projectData = [
+const projectData: Project[] = [
   {
     title: "Artist Search – Web App",
     image: artsyWeb,
@@ -79,28 +80,31 @@ const projectData = [
 
 const Projects = () => {
   const { ref, isVisible } = useScrollAnimation();
+  const [active, setActive] = useState<Project | null>(null);
 
   return (
     <section className="projects-section" id="projects">
-      <h2 className="section-heading">Projects</h2>
+      <h2 className="section-heading" data-index="02">
+        Projects
+      </h2>
       <div
         ref={ref}
         className={`projects-grid stagger-children ${isVisible ? "visible" : ""}`}
       >
         {projectData.map((proj, index) => (
-          <a
-            href={proj.github}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
             className="project-card-link animate-child"
             key={index}
+            onClick={() => setActive(proj)}
+            aria-label={`View details for ${proj.title}`}
           >
-            <div className="project-card">
+            <div className="project-card" data-spotlight>
               <div className="project-img">
                 <img src={proj.image} alt={proj.title} loading="lazy" />
                 <div className="img-overlay">
                   <span className="overlay-text">
-                    <FiExternalLink /> View Project
+                    <FiExternalLink /> View Details
                   </span>
                 </div>
               </div>
@@ -115,15 +119,13 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
-                <div className="project-link">
-                  <FaGithub />
-                  <span>View Code</span>
-                </div>
               </div>
             </div>
-          </a>
+          </button>
         ))}
       </div>
+
+      <ProjectModal project={active} onClose={() => setActive(null)} />
     </section>
   );
 };
