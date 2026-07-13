@@ -2,9 +2,11 @@ import { useState, useEffect, useContext } from "react";
 import "./navbar.scss";
 import logoImg from "../../assets/logo.png";
 import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
+import { FiSearch } from "react-icons/fi";
 import { ThemeContext } from "../../context/themeContext";
 
 const navLinks = [
+  { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experiences" },
   { label: "Projects", href: "#projects" },
@@ -49,17 +51,26 @@ const NavBar = () => {
   return (
     <div className={`navContainer ${scrolled ? "scrolled" : ""}`}>
       <nav>
-        <a href="#hero" className="logo" onClick={handleLinkClick}>
-          <img src={logoImg} alt="Logo" className="logo-image" loading="lazy" />
+        <a
+          href="#home"
+          className="logo"
+          onClick={handleLinkClick}
+          aria-label="Shreyansh Kabra — home"
+        >
+          <img src={logoImg} alt="" className="logo-image" loading="lazy" />
           <span className="logoText">SK</span>
         </a>
 
-        <div className={`navLinks ${menuOpen ? "active" : ""}`}>
+        <div
+          id="primary-nav"
+          className={`navLinks ${menuOpen ? "active" : ""}`}
+        >
           {navLinks.map((link) => (
             <a
               href={link.href}
               onClick={handleLinkClick}
               className={activeSection === link.href ? "active" : ""}
+              aria-current={activeSection === link.href ? "true" : undefined}
               key={link.href}
             >
               {link.label}
@@ -68,9 +79,24 @@ const NavBar = () => {
         </div>
 
         <div className="nav-actions">
+          {/* Command palette trigger */}
+          <button
+            className="cmdk-trigger"
+            aria-label="Open command palette"
+            onClick={() =>
+              window.dispatchEvent(new Event("open-command-palette"))
+            }
+          >
+            <FiSearch />
+            <span className="cmdk-trigger-keys">
+              <kbd>⌘</kbd>
+              <kbd>K</kbd>
+            </span>
+          </button>
+
           {/* Theme toggle button */}
           <button
-            aria-label="Toggle Theme"
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
             className="theme-toggle-btn"
             onClick={toggleTheme}
           >
@@ -78,9 +104,15 @@ const NavBar = () => {
           </button>
 
           {/* Hamburger menu toggle */}
-          <div className="menuToggle" onClick={() => setMenuOpen(!menuOpen)}>
+          <button
+            className="menuToggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="primary-nav"
+          >
             {menuOpen ? <FaTimes /> : <FaBars />}
-          </div>
+          </button>
         </div>
       </nav>
     </div>

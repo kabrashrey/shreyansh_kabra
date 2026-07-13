@@ -35,11 +35,8 @@ const Communication = () => {
         <h2 className="section-heading">Let's Connect</h2>
         <p className="subheading">
           I'm always open to discussing new opportunities, tech ideas, or
-          collaboration.
-          <br />
-          Reach out!
+          collaboration. Reach out!
         </p>
-        {/* <p className="email-display">kabras@usc.edu</p> */}
 
         <div className="social-links">
           {socialLinks.map((link, idx) => (

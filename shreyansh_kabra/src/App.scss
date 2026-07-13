@@ -9,66 +9,109 @@
   padding: 0;
 }
 
-body {
-  font-family:
-    "Inter",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    sans-serif;
-  line-height: 1.6;
+html {
   background-color: var(--light);
+  transition: background-color 0.3s ease;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  background-color: transparent;
   color: var(--dark);
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  transition: color 0.3s ease;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* CSS Variables for theme */
+/* ================================================================
+   Design tokens — editorial "paper + ink + one ember accent"
+   Variable NAMES are preserved for backward-compat with components;
+   only their values changed. Light = warm paper, Dark = warm ink.
+   ================================================================ */
 :root {
+  /* Blue/indigo accent. --accent is a tonal sibling of --primary so
+     gradients read as one cohesive hue. --primary-rgb powers alpha fills. */
   --primary: #2563eb;
   --primary-light: #3b82f6;
-  --accent: #f472b6;
-  --accent-dark: #ec4899;
-  --light: #fafbfc;
-  --dark: #1e293b;
-  --gray-light: #f1f5f9;
-  --gray-dark: #64748b;
+  --primary-rgb: 37, 99, 235;
+  --accent: #4f46e5;
+  --accent-dark: #4338ca;
+  --accent-soft: rgba(37, 99, 235, 0.08);
+  --hover-color: #4f46e5;
+
+  /* Surfaces & ink — clean cool neutrals */
+  --light: #f7f9fc; /* page background */
+  --dark: #131a2b; /* primary text — near-black navy */
+  --gray-light: #eaeef6; /* subtle fills / chips */
+  --gray-dark: #5b647a; /* muted / secondary text */
   --card-bg: #ffffff;
-  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-  --card-shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.1);
-  --border-subtle: rgba(0, 0, 0, 0.06);
-  --section-alt: #f0f4f8;
+  --section-alt: #eef1f8;
+
+  --card-shadow: 0 1px 2px rgba(19, 26, 43, 0.04);
+  --card-shadow-hover: 0 16px 40px rgba(19, 26, 43, 0.1);
+  --border-subtle: rgba(19, 26, 43, 0.1);
+  --nav-bg: rgba(247, 249, 252, 0.72);
+  --nav-bg-scrolled: rgba(247, 249, 252, 0.88);
+  /* Translucent section surfaces so the ambient mesh shows through subtly */
+  --surface-1: rgba(247, 249, 252, 0.86);
+  --surface-2: rgba(238, 241, 248, 0.84);
   --gradient-subtle: linear-gradient(
     135deg,
     rgba(37, 99, 235, 0.03),
-    rgba(244, 114, 182, 0.03)
+    rgba(79, 70, 229, 0.03)
   );
+
+  /* Typography */
+  --font-sans:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Fluid type scale */
+  --step--1: clamp(0.83rem, 0.78rem + 0.2vw, 0.95rem);
+  --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.13rem);
+  --step-1: clamp(1.25rem, 1.1rem + 0.6vw, 1.6rem);
+  --step-2: clamp(1.75rem, 1.4rem + 1.4vw, 2.6rem);
+  --step-3: clamp(2.5rem, 1.9rem + 2.8vw, 4.5rem);
+
+  /* Radius scale — one consistent system */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+
+  /* Spacing rhythm */
+  --space-section: clamp(4rem, 3rem + 5vw, 8rem);
 }
 
-/* Dark Mode */
+/* Dark Mode — deep navy ink */
 body.dark-mode {
   --primary: #60a5fa;
   --primary-light: #93c5fd;
-  --accent: #f472b6;
-  --accent-dark: #ec4899;
-  --light: #0f172a;
-  --dark: #f1f5f9;
-  --gray-light: #1e293b;
-  --gray-dark: #94a3b8;
-  --card-bg: #1e293b;
-  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-  --card-shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.45);
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --section-alt: #111827;
+  --primary-rgb: 96, 165, 250;
+  --accent: #818cf8;
+  --accent-dark: #6366f1;
+  --accent-soft: rgba(96, 165, 250, 0.1);
+  --hover-color: #93c5fd;
+
+  --light: #0b1120;
+  --dark: #e6ebf4;
+  --gray-light: #1a2236;
+  --gray-dark: #8993a8;
+  --card-bg: #131b2e;
+  --section-alt: #080d19;
+
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --border-subtle: rgba(230, 235, 244, 0.1);
+  --nav-bg: rgba(11, 17, 32, 0.72);
+  --nav-bg-scrolled: rgba(11, 17, 32, 0.9);
+  --surface-1: rgba(11, 17, 32, 0.82);
+  --surface-2: rgba(8, 13, 25, 0.8);
   --gradient-subtle: linear-gradient(
     135deg,
-    rgba(96, 165, 250, 0.04),
-    rgba(244, 114, 182, 0.04)
+    rgba(96, 165, 250, 0.05),
+    rgba(129, 140, 248, 0.05)
   );
 
   background-color: var(--light);
@@ -80,35 +123,32 @@ section {
   scroll-margin-top: 80px;
 }
 
-/* Section heading style */
+/* Section heading style — centered */
 .section-heading {
-  font-size: 2.2rem;
+  font-size: var(--step-2);
   font-weight: 800;
   text-align: center;
   color: var(--dark);
   margin-bottom: 2.5rem;
   position: relative;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 
   &::after {
     content: "";
     display: block;
     width: 3rem;
-    height: 4px;
+    height: 3px;
     background: linear-gradient(to right, var(--primary), var(--accent));
-    margin: 0.5em auto 0;
+    margin: 0.7rem auto 0;
     border-radius: 2px;
   }
 }
 
 @media (max-width: 768px) {
   .section-heading {
-    font-size: 1.75rem;
-
     &::after {
       width: 2.5rem;
-      height: 3px;
-      margin-top: 0.4em;
     }
   }
 }
@@ -119,10 +159,42 @@ a {
   text-decoration: none;
   transition: color 0.3s ease;
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: var(--accent);
-    outline: none;
+  }
+}
+
+/* Accessible keyboard focus ring for all interactive elements */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip-to-content link — visible only when focused */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2000;
+  padding: 0.6rem 1rem;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transform: translateY(-150%);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    color: #fff;
+  }
+
+  &:focus {
+    transform: translateY(0);
   }
 }
 
@@ -143,10 +215,10 @@ a.btn {
   &.btn-fancy {
     background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
-    box-shadow: 0 5px 20px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 5px 20px rgba(var(--primary-rgb), 0.3);
 
     &:hover {
-      box-shadow: 0 8px 30px rgba(37, 99, 235, 0.45);
+      box-shadow: 0 8px 30px rgba(var(--primary-rgb), 0.45);
       transform: translateY(-2px);
     }
   }
@@ -182,12 +254,15 @@ a.btn {
 }
 
 /* ========== Scroll Animation Utilities ========== */
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(28px);
   transition:
-    opacity 0.6s ease-out,
-    transform 0.6s ease-out;
+    opacity 0.7s $ease-out-expo,
+    transform 0.7s $ease-out-expo;
+  will-change: opacity, transform;
 }
 
 .animate-on-scroll.visible {
@@ -195,13 +270,30 @@ a.btn {
   transform: translateY(0);
 }
 
+/* Directional / scale reveal variants (opt-in) */
+.reveal-left {
+  transform: translateX(-32px);
+}
+.reveal-right {
+  transform: translateX(32px);
+}
+.reveal-scale {
+  transform: scale(0.96);
+}
+.animate-on-scroll.reveal-left.visible,
+.animate-on-scroll.reveal-right.visible,
+.animate-on-scroll.reveal-scale.visible {
+  transform: none;
+}
+
 /* Staggered children animation */
 .stagger-children .animate-child {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(20px);
   transition:
-    opacity 0.45s ease-out,
-    transform 0.45s ease-out;
+    opacity 0.55s $ease-out-expo,
+    transform 0.55s $ease-out-expo;
+  will-change: opacity, transform;
 }
 
 .stagger-children.visible .animate-child {
@@ -211,7 +303,34 @@ a.btn {
 
 @for $i from 1 through 20 {
   .stagger-children.visible .animate-child:nth-child(#{$i}) {
-    transition-delay: #{$i * 0.06}s;
+    transition-delay: #{$i * 0.08}s;
+  }
+}
+
+/* ========== Spotlight cards ========== */
+/* Uses ::after so it never collides with cards that use ::before
+   (skill-category / education-card gradient top-bars). */
+[data-spotlight] {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      280px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(var(--primary-rgb), 0.14),
+      transparent 45%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &:hover::after {
+    opacity: 1;
   }
 }
 
@@ -248,4 +367,23 @@ a.btn {
 }
 body.dark-mode ::-webkit-scrollbar-thumb {
   background: var(--accent);
+}
+
+/* ========== Reduced Motion ========== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Ensure scroll-reveal content is always shown, never stuck hidden */
+  .animate-on-scroll,
+  .stagger-children .animate-child {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

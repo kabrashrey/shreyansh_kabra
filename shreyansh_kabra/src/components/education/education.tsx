@@ -29,7 +29,9 @@ const Education = () => {
 
   return (
     <section className="education-section" id="education">
-      <h2 className="section-heading">Education</h2>
+      <h2 className="section-heading" data-index="04">
+        Education
+      </h2>
       <div
         ref={ref}
         className={`education-wrapper stagger-children ${isVisible ? "visible" : ""}`}
@@ -42,7 +44,7 @@ const Education = () => {
             className="education-card-link animate-child"
             key={idx}
           >
-            <div className="education-card">
+            <div className="education-card" data-spotlight>
               <img src={edu.logo} alt={`${edu.college} logo`} loading="lazy" />
               <div className="education-details">
                 <h3>{edu.college}</h3>
