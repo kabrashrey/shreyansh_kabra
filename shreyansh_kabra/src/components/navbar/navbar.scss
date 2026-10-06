@@ -155,6 +155,19 @@
     background: var(--accent-soft);
     color: var(--primary);
   }
+
+  .theme-icon-sun {
+    display: none;
+  }
+}
+
+body.dark-mode .theme-toggle-btn {
+  .theme-icon-sun {
+    display: block;
+  }
+  .theme-icon-moon {
+    display: none;
+  }
 }
 
 /* Hamburger — HIDE on desktop */

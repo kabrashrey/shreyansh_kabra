@@ -8,9 +8,9 @@ const experiences = [
   {
     company: "Amazon Web Services",
     role: "SDE Intern (Summer)",
-    duration: "May 2026 - August 2026",
+    duration: "May 2026 – Aug 2026",
     logo: amazonLogo,
-    website: "https://www.amazon.com/",
+    website: "https://aws.amazon.com",
     highlights: [
       "Designed a distributed L2 cache layer (ElastiCache Serverless Redis) beneath a per-host in-memory L1 (Caffeine) cache for Amazon Connect's agent-routing service, cutting redundant downstream traffic by 90% (118K to 12K fetches per cycle) across a 591-host fleet.",
       "Implemented a read-through client (Lettuce) with a 100ms command timeout, TTL-based freshness write-back, and empty-result guard, sustaining single-digit-millisecond p99 latency and graceful fallback when the cache is unavailable.",

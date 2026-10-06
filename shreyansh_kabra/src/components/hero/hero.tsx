@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import "./hero.scss";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaDownload } from "react-icons/fa";
 import { FiArrowDown } from "react-icons/fi";
 import resume from "../../assets/Shreyansh_Kabra.pdf";
-import { FaDownload } from "react-icons/fa";
 import DotGrid from "./DotGrid";
 
 const titles = [

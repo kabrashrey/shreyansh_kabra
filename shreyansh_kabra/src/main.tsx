@@ -1,12 +1,12 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
-import { ThemeProvider } from "../src/context/themeProvider";
+import Root from "./Root";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>
-);
+const container = document.getElementById("root")!;
+
+// Production builds ship prerendered HTML (see scripts/prerender.mjs), so
+// attach to it; the dev server serves an empty root, so render from scratch.
+if (container.hasChildNodes()) {
+  ReactDOM.hydrateRoot(container, <Root />);
+} else {
+  ReactDOM.createRoot(container).render(<Root />);
+}

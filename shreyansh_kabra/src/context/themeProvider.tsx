@@ -5,6 +5,8 @@ import { ThemeContext, type Theme } from "./themeContext";
 // Saved choice wins; otherwise follow the system preference.
 // Mirrors the inline script in index.html that sets the class before first paint.
 const getInitialTheme = (): Theme => {
+  // Build-time prerender has no window; markup doesn't depend on the theme
+  if (typeof window === "undefined") return "light";
   try {
     const saved = localStorage.getItem("theme");
     if (saved === "light" || saved === "dark") return saved;

@@ -20,7 +20,7 @@ const NavBar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { toggleTheme } = useContext(ThemeContext);
 
   const handleLinkClick = () => setMenuOpen(false);
 
@@ -57,7 +57,7 @@ const NavBar = () => {
           onClick={handleLinkClick}
           aria-label="Shreyansh Kabra — home"
         >
-          <img src={logoImg} alt="" className="logo-image" loading="lazy" />
+          <img src={logoImg} alt="" className="logo-image" />
           <span className="logoText">SK</span>
         </a>
 
@@ -95,12 +95,14 @@ const NavBar = () => {
           </button>
 
           {/* Theme toggle button */}
+          {/* Both icons rendered; CSS shows the right one (keeps prerendered HTML theme-independent) */}
           <button
-            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            aria-label="Toggle dark mode"
             className="theme-toggle-btn"
             onClick={toggleTheme}
           >
-            {theme === "dark" ? <FaSun /> : <FaMoon />}
+            <FaSun className="theme-icon-sun" />
+            <FaMoon className="theme-icon-moon" />
           </button>
 
           {/* Hamburger menu toggle */}
