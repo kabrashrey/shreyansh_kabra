@@ -28,7 +28,8 @@ const ProjectModal = ({ project, onClose }: Props) => {
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    // Move focus into the dialog
+    // Move focus into the dialog, remembering where it came from
+    const opener = document.activeElement as HTMLElement | null;
     closeRef.current?.focus();
 
     const onKeyDown = (e: KeyboardEvent) => {
@@ -58,6 +59,8 @@ const ProjectModal = ({ project, onClose }: Props) => {
     return () => {
       document.body.style.overflow = prevOverflow;
       document.removeEventListener("keydown", onKeyDown);
+      // Return focus to the card that opened the dialog
+      opener?.focus({ preventScroll: true });
     };
   }, [project, onClose]);
 

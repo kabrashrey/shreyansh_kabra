@@ -5,6 +5,9 @@ import { useEffect, useRef } from "react";
  * Dots near the pointer brighten, scale up, and gently push away, creating
  * a subtle "field" effect. Fully theme-aware (reads the current accent from
  * CSS custom properties) and disabled for users who prefer reduced motion.
+ *
+ * The animation loop only runs while the pointer is near the hero and the
+ * hero is on screen; otherwise a single static frame is drawn.
  */
 const DotGrid = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -29,16 +32,7 @@ const DotGrid = () => {
     let dots: { x: number; y: number }[] = [];
     const pointer = { x: -9999, y: -9999, active: false };
     let rafId = 0;
-
-    // Resolve theme colors from CSS variables at runtime.
-    const readColors = () => {
-      const styles = getComputedStyle(document.body);
-      return {
-        base: styles.getPropertyValue("--gray-dark").trim() || "#6b6459",
-        accent: styles.getPropertyValue("--primary").trim() || "#c2551f",
-      };
-    };
-    let colors = readColors();
+    let visible = true;
 
     const hexToRgb = (hex: string) => {
       const h = hex.replace("#", "");
@@ -52,6 +46,20 @@ const DotGrid = () => {
       const int = parseInt(full, 16);
       return { r: (int >> 16) & 255, g: (int >> 8) & 255, b: int & 255 };
     };
+
+    // Resolve theme colors from CSS variables once (re-read on theme change).
+    const readColors = () => {
+      const styles = getComputedStyle(document.body);
+      return {
+        base: hexToRgb(
+          styles.getPropertyValue("--gray-dark").trim() || "#6b6459"
+        ),
+        accent: hexToRgb(
+          styles.getPropertyValue("--primary").trim() || "#c2551f"
+        ),
+      };
+    };
+    let colors = readColors();
 
     const build = () => {
       const rect = canvas.getBoundingClientRect();
@@ -73,13 +81,10 @@ const DotGrid = () => {
       }
     };
 
-    const baseRgb = () => hexToRgb(colors.base);
-    const accentRgb = () => hexToRgb(colors.accent);
-
-    const render = () => {
+    const draw = () => {
       ctx.clearRect(0, 0, width, height);
-      const b = baseRgb();
-      const a = accentRgb();
+      const b = colors.base;
+      const a = colors.accent;
 
       for (const dot of dots) {
         let radius = BASE_RADIUS;
@@ -108,50 +113,68 @@ const DotGrid = () => {
         ctx.fillStyle = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`;
         ctx.fill();
       }
-      rafId = requestAnimationFrame(render);
     };
 
-    const drawStatic = () => {
-      ctx.clearRect(0, 0, width, height);
-      const b = baseRgb();
-      for (const dot of dots) {
-        ctx.beginPath();
-        ctx.arc(dot.x, dot.y, BASE_RADIUS, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${b.r}, ${b.g}, ${b.b}, 0.28)`;
-        ctx.fill();
-      }
+    // Draw one frame per pointer update; once the pointer leaves, the final
+    // frame renders the static grid and the loop goes idle.
+    const frame = () => {
+      rafId = 0;
+      draw();
+    };
+    const schedule = () => {
+      if (!rafId && visible) rafId = requestAnimationFrame(frame);
     };
 
     const onPointerMove = (e: PointerEvent) => {
       const rect = canvas.getBoundingClientRect();
+      const wasActive = pointer.active;
       pointer.x = e.clientX - rect.left;
       pointer.y = e.clientY - rect.top;
-      pointer.active = true;
+      // Only "active" when close enough to affect any dot.
+      pointer.active =
+        pointer.x > -INFLUENCE &&
+        pointer.x < width + INFLUENCE &&
+        pointer.y > -INFLUENCE &&
+        pointer.y < height + INFLUENCE;
+      if (pointer.active || wasActive) schedule();
     };
-    const onPointerLeave = () => {
+    const onPointerLeaveWindow = () => {
+      if (!pointer.active) return;
       pointer.active = false;
-      pointer.x = -9999;
-      pointer.y = -9999;
+      schedule();
     };
     const onResize = () => {
       build();
-      if (reduceMotion) drawStatic();
+      draw();
     };
     const onThemeChange = () => {
       colors = readColors();
-      if (reduceMotion) drawStatic();
+      draw();
     };
 
     build();
+    draw();
 
-    if (reduceMotion) {
-      drawStatic();
-    } else {
+    if (!reduceMotion) {
       window.addEventListener("pointermove", onPointerMove, { passive: true });
       window.addEventListener("pointerdown", onPointerMove, { passive: true });
-      canvas.addEventListener("pointerleave", onPointerLeave);
-      rafId = requestAnimationFrame(render);
+      document.documentElement.addEventListener(
+        "pointerleave",
+        onPointerLeaveWindow
+      );
     }
+
+    // Skip work entirely while the hero is scrolled out of view.
+    const visibilityObserver = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) {
+        schedule(); // catch up on any frame skipped while hidden
+      } else if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = 0;
+      }
+    });
+    visibilityObserver.observe(canvas);
 
     window.addEventListener("resize", onResize);
     // Redraw colors when the theme toggles (dark-mode class on body).
@@ -165,8 +188,12 @@ const DotGrid = () => {
       cancelAnimationFrame(rafId);
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("pointerdown", onPointerMove);
-      canvas.removeEventListener("pointerleave", onPointerLeave);
+      document.documentElement.removeEventListener(
+        "pointerleave",
+        onPointerLeaveWindow
+      );
       window.removeEventListener("resize", onResize);
+      visibilityObserver.disconnect();
       themeObserver.disconnect();
     };
   }, []);

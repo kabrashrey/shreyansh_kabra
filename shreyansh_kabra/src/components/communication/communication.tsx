@@ -17,7 +17,7 @@ const socialLinks = [
   },
   {
     name: "Email",
-    url: "https://mail.google.com/mail/?view=cm&fs=1&to=kabras@usc.edu",
+    url: "mailto:kabras@usc.edu",
     icon: FaEnvelope,
     color: "#EA4335",
   },
@@ -42,8 +42,10 @@ const Communication = () => {
           {socialLinks.map((link, idx) => (
             <a
               href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
+              {...(link.url.startsWith("http") && {
+                target: "_blank",
+                rel: "noopener noreferrer",
+              })}
               aria-label={link.name}
               className="social-link-item"
               key={idx}

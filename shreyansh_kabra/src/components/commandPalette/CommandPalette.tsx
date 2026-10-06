@@ -143,17 +143,20 @@ const CommandPalette = () => {
     };
   }, []);
 
-  // On open: reset, lock scroll, focus input
+  // On open: reset, lock scroll, focus input; on close: restore focus
   useEffect(() => {
     if (!open) return;
     setQuery("");
     setIndex(0);
+    const opener = document.activeElement as HTMLElement | null;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const t = window.setTimeout(() => inputRef.current?.focus(), 20);
     return () => {
       document.body.style.overflow = prev;
       window.clearTimeout(t);
+      // preventScroll so a "Go to …" command's smooth scroll isn't interrupted
+      opener?.focus({ preventScroll: true });
     };
   }, [open]);
 
@@ -183,6 +186,21 @@ const CommandPalette = () => {
     } else if (e.key === "Enter") {
       e.preventDefault();
       runAt(index);
+    } else if (e.key === "Tab") {
+      // Keep focus within the palette
+      const focusable = e.currentTarget.querySelectorAll<HTMLElement>(
+        "input, button:not([disabled])"
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   };
 

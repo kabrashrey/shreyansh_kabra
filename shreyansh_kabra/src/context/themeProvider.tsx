@@ -1,32 +1,37 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import type { ReactNode } from "react";
 import { ThemeContext, type Theme } from "./themeContext";
 
+// Saved choice wins; otherwise follow the system preference.
+// Mirrors the inline script in index.html that sets the class before first paint.
+const getInitialTheme = (): Theme => {
+  try {
+    const saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark") return saved;
+  } catch {
+    // Storage unavailable (e.g. private mode) — fall through to system preference
+  }
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
-  // On mount, check localStorage or system preference
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as Theme | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.body.classList.toggle("dark-mode", savedTheme === "dark");
-    } else {
-      // Check system preference
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      setTheme(prefersDark ? "dark" : "light");
-      document.body.classList.toggle("dark-mode", prefersDark);
-    }
-  }, []);
+    document.body.classList.toggle("dark-mode", theme === "dark");
+  }, [theme]);
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-    document.body.classList.toggle("dark-mode", newTheme === "dark");
-    localStorage.setItem("theme", newTheme);
-  };
+    try {
+      localStorage.setItem("theme", newTheme);
+    } catch {
+      // Ignore — theme still applies for this session
+    }
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

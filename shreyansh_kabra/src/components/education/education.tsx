@@ -10,7 +10,8 @@ const educationData = [
     degree: "M.S. in Computer Science",
     years: "2025 – 2026 (Expected)",
     coursework:
-      "Analysis of Algorithms, NLP, Deep Learning, Web Technologies, Database Systems, Machine Learning, Information Retrieval",
+      "Analysis of Algorithms, NLP, Deep Learning, Web Technologies, Database Systems, Machine Learning, " +
+        "Information Retrieval, Agentic AI",
     website: "https://www.usc.edu/",
   },
   {

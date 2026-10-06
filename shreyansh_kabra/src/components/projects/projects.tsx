@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FiExternalLink } from "react-icons/fi";
 import "./projects.scss";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
@@ -81,6 +81,8 @@ const projectData: Project[] = [
 const Projects = () => {
   const { ref, isVisible } = useScrollAnimation();
   const [active, setActive] = useState<Project | null>(null);
+  // Stable identity so the modal's open/close effect doesn't re-run each render
+  const closeModal = useCallback(() => setActive(null), []);
 
   return (
     <section className="projects-section" id="projects">
@@ -125,7 +127,7 @@ const Projects = () => {
         ))}
       </div>
 
-      <ProjectModal project={active} onClose={() => setActive(null)} />
+      <ProjectModal project={active} onClose={closeModal} />
     </section>
   );
 };
