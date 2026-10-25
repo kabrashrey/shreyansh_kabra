@@ -5,8 +5,24 @@ import react from "@vitejs/plugin-react";
 // When deploying to a custom domain (shreyanshkabra.com), set base to '/'.
 // For GitHub Pages (kabrashrey.github.io/shreyansh_kabra/), keep the subpath.
 const useCustomDomain = process.env.VITE_CUSTOM_DOMAIN === "true";
+const base = useCustomDomain ? "/" : "/shreyansh_kabra/";
+
+// Absolute URL of the deployed site; used for canonical/OG tags, the
+// sitemap, JSON-LD and llms.txt so they always match where the site lives.
+const siteUrl = useCustomDomain
+  ? "https://shreyanshkabra.com/"
+  : "https://kabrashrey.github.io/shreyansh_kabra/";
 
 export default defineConfig({
-  plugins: [react()],
-  base: useCustomDomain ? "/" : "/shreyansh_kabra/",
+  plugins: [
+    react(),
+    {
+      name: "site-url",
+      transformIndexHtml: (html) => html.replaceAll("%SITE_URL%", siteUrl),
+    },
+  ],
+  base,
+  define: {
+    __SITE_URL__: JSON.stringify(siteUrl),
+  },
 });

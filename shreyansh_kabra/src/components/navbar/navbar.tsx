@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from "react";
 import "./navbar.scss";
-import logoImg from "../../assets/logo.png";
 import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
 import { ThemeContext } from "../../context/themeContext";
@@ -57,8 +56,9 @@ const NavBar = () => {
           onClick={handleLinkClick}
           aria-label="Shreyansh Kabra — home"
         >
-          <img src={logoImg} alt="" className="logo-image" />
-          <span className="logoText">SK</span>
+          <span className="logoText" aria-hidden="true">
+            SK<span className="logo-dot">.</span>
+          </span>
         </a>
 
         <div

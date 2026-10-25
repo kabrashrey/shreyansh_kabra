@@ -4,13 +4,9 @@ import { FaGithub, FaLinkedin, FaDownload } from "react-icons/fa";
 import { FiArrowDown } from "react-icons/fi";
 import resume from "../../assets/Shreyansh_Kabra.pdf";
 import DotGrid from "./DotGrid";
+import { profile, socialUrl } from "../../data/profile";
 
-const titles = [
-  "Software Engineer",
-  "Backend Developer",
-  "AI/ML Enthusiast",
-  "Cloud Developer",
-];
+const titles = profile.heroTitles;
 
 const Hero = () => {
   const [titleIndex, setTitleIndex] = useState(0);
@@ -52,7 +48,7 @@ const Hero = () => {
         <div className="hero-main">
           <h1 className="hero-name">
             <span className="hero-name-line">
-              <span className="hero-name-inner">Shreyansh Kabra</span>
+              <span className="hero-name-inner">{profile.name}</span>
             </span>
           </h1>
 
@@ -61,11 +57,7 @@ const Hero = () => {
             <span className="cursor">|</span>
           </div>
 
-          <p className="hero-tagline">
-            Backend &amp; cloud engineer building scalable, observable systems —
-            from edge-to-cloud platforms and distributed caching to LLM &amp;
-            RAG applications.
-          </p>
+          <p className="hero-tagline">{profile.tagline}</p>
 
           <div className="hero-cta">
             <a
@@ -77,7 +69,7 @@ const Hero = () => {
               Resume
             </a>
             <a
-              href="https://github.com/kabrashrey"
+              href={socialUrl("GitHub")}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-outline hero-btn"
@@ -86,7 +78,7 @@ const Hero = () => {
               GitHub
             </a>
             <a
-              href="https://www.linkedin.com/in/shreyansh-kabra/"
+              href={socialUrl("LinkedIn")}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-outline hero-btn"

@@ -2,81 +2,8 @@ import { useCallback, useState } from "react";
 import { FiExternalLink } from "react-icons/fi";
 import "./projects.scss";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
-import ProjectModal, { type Project } from "./ProjectModal";
-
-import artsyWeb from "../../assets/artsy_web.png";
-import portfolio from "../../assets/portfolio.webp";
-import artsyAndroid from "../../assets/artsy_android.png";
-import trafficImg from "../../assets/traffic_analysis.webp";
-import tensorflowImg from "../../assets/TL.webp";
-import nlpImg from "../../assets/nlp.webp";
-import dlImg from "../../assets/multi_hop.webp";
-
-const projectData: Project[] = [
-  {
-    title: "Artist Search – Web App",
-    image: artsyWeb,
-    github: "https://github.com/kabrashrey/artsy-search",
-    description:
-      "Full-stack app integrating Artsy API to explore 100K+ artists. JWT auth, MongoDB, deployed on GCP with perfect Lighthouse scores.",
-    techStack: ["React", "Node.js", "Express", "MongoDB", "GCP"],
-  },
-  {
-    title: "Artist Search – Android App",
-    image: artsyAndroid,
-    github: "https://github.com/kabrashrey/artsy-mobile-app",
-    description:
-      "Native Android app with Kotlin and Node.js backend for Artsy's database. Token-based auth and MongoDB persistence.",
-    techStack: ["Kotlin", "Android SDK", "Node.js", "MongoDB"],
-  },
-  {
-    title: "Portfolio Website",
-    image: portfolio,
-    github: "https://github.com/kabrashrey/shreyansh_kabra",
-    description:
-      "Personal portfolio built with React, TypeScript, and Vite. Dark/light mode, responsive layout, and optimized loading.",
-    techStack: ["React", "TypeScript", "SCSS"],
-  },
-  {
-    title: "Image Classification – Transfer Learning",
-    image: tensorflowImg,
-    github:
-      "https://github.com/kabrashrey/Image-Classification-Transfer-Learning",
-    description:
-      "Image classification using transfer learning with TensorFlow/Keras. Fine-tuned pre-trained model on custom artwork dataset.",
-    techStack: ["Python", "TensorFlow", "Keras", "Transfer Learning"],
-  },
-  {
-    title: "Police Activity & Weather Analysis",
-    image: trafficImg,
-    github: "https://github.com/kabrashrey/police_weather_data_analysis",
-    description:
-      "Analyzed 86K+ RI traffic stops with weather data to identify biases and temporal patterns using statistical analysis.",
-    techStack: ["Python", "Pandas", "NumPy", "Data Analysis"],
-  },
-  {
-    title: "Mental Health Signal Detector",
-    image: nlpImg,
-    github: "https://github.com/Gaurav-Zanpure/group-23-mh-signals",
-    description:
-      "Real-time NLP system classifying support group posts by intent and concern level, with a lightweight RAG module for suggestions.",
-    techStack: ["Python", "NLP", "RAG", "Transformers"],
-  },
-  {
-    title: "Evidence based RAG for Hallucination-Resistant Multihop Q&A",
-    image: dlImg,
-    github:
-      "https://github.com/kabrashrey/hallucination_resistant_multihop_qna",
-    description:
-      "Evidence-based RAG system for multihop question answering, RAG module for suggestions.",
-    techStack: [
-      "Deep Learning",
-      "LLM",
-      "Vector Database",
-      "Prompt Engineering",
-    ],
-  },
-];
+import ProjectModal from "./ProjectModal";
+import { profile, type Project } from "../../data/profile";
 
 const Projects = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -93,7 +20,7 @@ const Projects = () => {
         ref={ref}
         className={`projects-grid stagger-children ${isVisible ? "visible" : ""}`}
       >
-        {projectData.map((proj, index) => (
+        {profile.projects.map((proj, index) => (
           <button
             type="button"
             className="project-card-link animate-child"

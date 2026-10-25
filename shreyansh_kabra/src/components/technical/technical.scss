@@ -37,8 +37,8 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    background: linear-gradient(to right, var(--primary), var(--accent));
+    height: 2px;
+    background: var(--accent);
     opacity: 0;
     transition: opacity 0.3s ease;
   }
@@ -92,11 +92,10 @@
 
   &:hover {
     background: var(--primary);
-    color: white;
+    color: var(--on-primary);
     border-color: var(--primary);
-    box-shadow: 0 2px 12px rgba(var(--primary-rgb), 0.3);
     .skill-icon {
-      color: white;
+      color: var(--on-primary);
     }
   }
 }

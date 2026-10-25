@@ -1,27 +1,19 @@
 import "./communication.scss";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+import { profile } from "../../data/profile";
 
-const socialLinks = [
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/shreyansh-kabra/",
-    icon: FaLinkedin,
-    color: "#0077B5",
-  },
-  {
-    name: "GitHub",
-    url: "https://github.com/kabrashrey",
-    icon: FaGithub,
-    color: "#333",
-  },
-  {
-    name: "Email",
-    url: "mailto:kabras@usc.edu",
-    icon: FaEnvelope,
-    color: "#EA4335",
-  },
-];
+// Presentation per social; URLs come from the profile
+const socialStyle = {
+  LinkedIn: { icon: FaLinkedin, color: "#0077B5" },
+  GitHub: { icon: FaGithub, color: "#333" },
+  Email: { icon: FaEnvelope, color: "#EA4335" },
+};
+
+const socialLinks = profile.socials.map((s) => ({
+  ...s,
+  ...socialStyle[s.name],
+}));
 
 const Communication = () => {
   const { ref, isVisible } = useScrollAnimation();

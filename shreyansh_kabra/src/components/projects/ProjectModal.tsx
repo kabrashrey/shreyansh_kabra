@@ -3,14 +3,7 @@ import { createPortal } from "react-dom";
 import { FaGithub } from "react-icons/fa";
 import { FiX } from "react-icons/fi";
 import "./projectModal.scss";
-
-export interface Project {
-  title: string;
-  image: string;
-  github: string;
-  description: string;
-  techStack: string[];
-}
+import type { Project } from "../../data/profile";
 
 interface Props {
   project: Project | null;

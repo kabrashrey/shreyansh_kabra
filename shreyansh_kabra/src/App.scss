@@ -26,47 +26,49 @@ body {
 }
 
 /* ================================================================
-   Design tokens — editorial "paper + ink + one ember accent"
+   Design tokens — "Editorial Lab": warm paper, ink, one vermilion accent.
    Variable NAMES are preserved for backward-compat with components;
-   only their values changed. Light = warm paper, Dark = warm ink.
+   only their values changed. Light = paper, Dark = warm ink.
    ================================================================ */
 :root {
-  /* Blue/indigo accent. --accent is a tonal sibling of --primary so
-     gradients read as one cohesive hue. --primary-rgb powers alpha fills. */
-  --primary: #2563eb;
-  --primary-light: #3b82f6;
-  --primary-rgb: 37, 99, 235;
-  --accent: #4f46e5;
-  --accent-dark: #4338ca;
-  --accent-soft: rgba(37, 99, 235, 0.08);
-  --hover-color: #4f46e5;
+  /* Vermilion accent. --primary is the text-safe shade (AA on paper) used
+     for links and filled buttons; --accent is the brighter display shade
+     for rules, dots and large type. --primary-rgb powers alpha fills. */
+  --primary: #b83a20;
+  --primary-light: #e5482d;
+  --primary-rgb: 229, 72, 45;
+  --accent: #e5482d;
+  --accent-dark: #b83a20;
+  --accent-soft: rgba(229, 72, 45, 0.08);
+  --hover-color: #b83a20;
+  --on-primary: #ffffff; /* text on filled --primary */
 
-  /* Surfaces & ink — clean cool neutrals */
-  --light: #f7f9fc; /* page background */
-  --dark: #131a2b; /* primary text — near-black navy */
-  --gray-light: #eaeef6; /* subtle fills / chips */
-  --gray-dark: #5b647a; /* muted / secondary text */
-  --card-bg: #ffffff;
-  --section-alt: #eef1f8;
+  /* Surfaces & ink — warm paper neutrals */
+  --light: #f5f1ea; /* page background (paper) */
+  --dark: #1a1a1a; /* primary text — ink */
+  --gray-light: #ece6db; /* subtle fills / chips */
+  --gray-dark: #6b6560; /* muted / secondary text */
+  --card-bg: #fbf8f3;
+  --section-alt: #efe9df;
 
-  --card-shadow: 0 1px 2px rgba(19, 26, 43, 0.04);
-  --card-shadow-hover: 0 16px 40px rgba(19, 26, 43, 0.1);
-  --border-subtle: rgba(19, 26, 43, 0.1);
-  --nav-bg: rgba(247, 249, 252, 0.72);
-  --nav-bg-scrolled: rgba(247, 249, 252, 0.88);
-  /* Translucent section surfaces so the ambient mesh shows through subtly */
-  --surface-1: rgba(247, 249, 252, 0.86);
-  --surface-2: rgba(238, 241, 248, 0.84);
-  --gradient-subtle: linear-gradient(
-    135deg,
-    rgba(37, 99, 235, 0.03),
-    rgba(79, 70, 229, 0.03)
-  );
+  --card-shadow: 0 1px 0 rgba(26, 26, 26, 0.04);
+  --card-shadow-hover: 0 12px 32px rgba(26, 26, 26, 0.08);
+  --border-subtle: #d9d2c5; /* hairline rules */
+  --nav-bg: rgba(245, 241, 234, 0.72);
+  --nav-bg-scrolled: rgba(245, 241, 234, 0.9);
+  --overlay: rgba(26, 24, 22, 0.5); /* modal / palette backdrop */
+  /* Translucent section surfaces so the paper grain shows through subtly */
+  --surface-1: rgba(245, 241, 234, 0.86);
+  --surface-2: rgba(239, 233, 223, 0.84);
+  --gradient-subtle: none;
 
   /* Typography */
   --font-sans:
-    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  /* Display serif ships a single 400 weight — size carries hierarchy */
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   /* Fluid type scale */
   --step--1: clamp(0.83rem, 0.78rem + 0.2vw, 0.95rem);
@@ -76,43 +78,41 @@ body {
   --step-3: clamp(2.5rem, 1.9rem + 2.8vw, 4.5rem);
 
   /* Radius scale — one consistent system */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
 
   /* Spacing rhythm */
   --space-section: clamp(4rem, 3rem + 5vw, 8rem);
 }
 
-/* Dark Mode — deep navy ink */
+/* Dark Mode — warm ink */
 body.dark-mode {
-  --primary: #60a5fa;
-  --primary-light: #93c5fd;
-  --primary-rgb: 96, 165, 250;
-  --accent: #818cf8;
-  --accent-dark: #6366f1;
-  --accent-soft: rgba(96, 165, 250, 0.1);
-  --hover-color: #93c5fd;
+  --primary: #ff6a4d;
+  --primary-light: #ff8a70;
+  --primary-rgb: 255, 106, 77;
+  --accent: #ff6a4d;
+  --accent-dark: #e5482d;
+  --accent-soft: rgba(255, 106, 77, 0.1);
+  --hover-color: #ff8a70;
+  --on-primary: #121110;
 
-  --light: #0b1120;
-  --dark: #e6ebf4;
-  --gray-light: #1a2236;
-  --gray-dark: #8993a8;
-  --card-bg: #131b2e;
-  --section-alt: #080d19;
+  --light: #121110;
+  --dark: #ede8df;
+  --gray-light: #1e1c1a;
+  --gray-dark: #9a938a;
+  --card-bg: #1a1816;
+  --section-alt: #0e0d0c;
 
-  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --card-shadow-hover: 0 16px 40px rgba(0, 0, 0, 0.5);
-  --border-subtle: rgba(230, 235, 244, 0.1);
-  --nav-bg: rgba(11, 17, 32, 0.72);
-  --nav-bg-scrolled: rgba(11, 17, 32, 0.9);
-  --surface-1: rgba(11, 17, 32, 0.82);
-  --surface-2: rgba(8, 13, 25, 0.8);
-  --gradient-subtle: linear-gradient(
-    135deg,
-    rgba(96, 165, 250, 0.05),
-    rgba(129, 140, 248, 0.05)
-  );
+  --card-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --border-subtle: #2e2b27;
+  --nav-bg: rgba(18, 17, 16, 0.72);
+  --nav-bg-scrolled: rgba(18, 17, 16, 0.9);
+  --overlay: rgba(0, 0, 0, 0.6);
+  --surface-1: rgba(18, 17, 16, 0.82);
+  --surface-2: rgba(14, 13, 12, 0.8);
+  --gradient-subtle: none;
 
   background-color: var(--light);
   color: var(--dark);
@@ -123,33 +123,25 @@ section {
   scroll-margin-top: 80px;
 }
 
-/* Section heading style — centered */
+/* Section heading — editorial: serif title over a short vermilion rule */
 .section-heading {
-  font-size: var(--step-2);
-  font-weight: 800;
+  font-family: var(--font-serif);
+  font-size: calc(var(--step-2) * 1.25);
+  font-weight: 400;
   text-align: center;
   color: var(--dark);
   margin-bottom: 2.5rem;
   position: relative;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
 
   &::after {
     content: "";
     display: block;
-    width: 3rem;
-    height: 3px;
-    background: linear-gradient(to right, var(--primary), var(--accent));
-    margin: 0.7rem auto 0;
-    border-radius: 2px;
-  }
-}
-
-@media (max-width: 768px) {
-  .section-heading {
-    &::after {
-      width: 2.5rem;
-    }
+    width: 2.5rem;
+    height: 1px;
+    background: var(--accent);
+    margin: 0.9rem auto 0;
   }
 }
 
@@ -183,14 +175,14 @@ textarea:focus-visible {
   z-index: 2000;
   padding: 0.6rem 1rem;
   background: var(--primary);
-  color: #fff;
+  color: var(--on-primary);
   font-weight: 600;
   border-radius: var(--radius-sm);
   transform: translateY(-150%);
   transition: transform 0.2s ease;
 
   &:hover {
-    color: #fff;
+    color: var(--on-primary);
   }
 
   &:focus {
@@ -204,21 +196,20 @@ button,
 a.btn {
   cursor: pointer;
   user-select: none;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 0.65rem 1.4rem;
   font-size: 0.95rem;
   transition: all 0.3s ease;
 
   &.btn-fancy {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: white;
-    box-shadow: 0 5px 20px rgba(var(--primary-rgb), 0.3);
+    background: var(--primary);
+    color: var(--on-primary);
 
     &:hover {
-      box-shadow: 0 8px 30px rgba(var(--primary-rgb), 0.45);
+      color: var(--on-primary);
       transform: translateY(-2px);
     }
   }

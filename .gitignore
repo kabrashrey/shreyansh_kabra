@@ -22,3 +22,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Claude Code local config
+.claude/
+
+# Local env / secrets (e.g. API keys for the planned AI chat worker)
+.env
+.env.*
+!.env.example
+
+# Tool caches
+*.tsbuildinfo
+.eslintcache

@@ -1,6 +1,6 @@
 import "./about.scss";
-import profileImg from "../../assets/me.jpg";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+import { profile } from "../../data/profile";
 
 const About = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -17,36 +17,15 @@ const About = () => {
         >
           <div className="about-image-wrap animate-child">
             <img
-              src={profileImg}
-              alt="Shreyansh Kabra"
+              src={profile.photo}
+              alt={profile.name}
               className="about-image"
             />
           </div>
           <div className="about-text animate-child">
-            <p>
-              I'm a software engineer pursuing my M.S. in Computer Science at
-              USC, specializing in scalable backend systems and advanced AI/ML
-              techniques.
-            </p>
-
-            <p>
-              Most recently, I interned as an SDE at Amazon Web Services,
-              designing a distributed caching layer for Amazon Connect's
-              agent-routing service that cut redundant downstream traffic by 90%
-              across a 591-host fleet.
-            </p>
-
-            <p>
-              Before that, I spent 2+ years at Hewlett Packard Enterprise,
-              engineering 100+ RESTful APIs for the GreenLake edge-to-cloud
-              platform and architecting systems that improved operational
-              efficiency by 80%.
-            </p>
-
-            <p>
-              My work also spans NLP, Generative AI, and RAG systems — building
-              with FAISS and LoRA to fine-tune Large Language Models.
-            </p>
+            {profile.about.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
           </div>
         </div>
       </div>

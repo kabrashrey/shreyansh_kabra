@@ -19,6 +19,7 @@ import type { IconType } from "react-icons";
 import "./commandPalette.scss";
 import { ThemeContext } from "../../context/themeContext";
 import resume from "../../assets/Shreyansh_Kabra.pdf";
+import { socialUrl } from "../../data/profile";
 
 interface Command {
   id: string;
@@ -99,13 +100,13 @@ const CommandPalette = () => {
         id: "github",
         label: "Open GitHub",
         Icon: FaGithub,
-        run: openUrl("https://github.com/kabrashrey"),
+        run: openUrl(socialUrl("GitHub")),
       },
       {
         id: "linkedin",
         label: "Open LinkedIn",
         Icon: FaLinkedin,
-        run: openUrl("https://www.linkedin.com/in/shreyansh-kabra/"),
+        run: openUrl(socialUrl("LinkedIn")),
       },
       {
         id: "theme",

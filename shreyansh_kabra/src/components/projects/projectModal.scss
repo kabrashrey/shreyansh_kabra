@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  background: rgba(8, 13, 25, 0.55);
+  background: var(--overlay);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   animation: pm-fade 0.25s ease-out;
@@ -139,13 +139,12 @@
   font-size: 0.9rem;
 
   &.btn-fancy {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: white;
+    background: var(--primary);
+    color: var(--on-primary);
     border: none;
-    box-shadow: 0 4px 20px rgba(var(--primary-rgb), 0.3);
 
     &:hover {
-      box-shadow: 0 6px 28px rgba(var(--primary-rgb), 0.5);
+      color: var(--on-primary);
       transform: translateY(-2px);
     }
   }

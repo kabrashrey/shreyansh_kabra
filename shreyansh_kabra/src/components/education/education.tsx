@@ -1,28 +1,8 @@
 import "./education.scss";
-import uscLogo from "../../assets/USC_logo.png";
-import jecrcLogo from "../../assets/ju.png";
+import { profile } from "../../data/profile";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
-const educationData = [
-  {
-    logo: uscLogo,
-    college: "University of Southern California",
-    degree: "M.S. in Computer Science",
-    years: "2025 – 2026 (Expected)",
-    coursework:
-      "Analysis of Algorithms, NLP, Deep Learning, Web Technologies, Database Systems, Machine Learning, Information Retrieval, Agentic AI",
-    website: "https://www.usc.edu/",
-  },
-  {
-    logo: jecrcLogo,
-    college: "JECRC University",
-    degree: "B.Tech in Computer Science & Engineering",
-    years: "2018 – 2022",
-    coursework:
-      "Data Structures, DBMS, Machine Learning, Programming Languages, Object Oriented Programming",
-    website: "https://www.jecrcuniversity.edu.in/",
-  },
-];
+const educationData = profile.education;
 
 const Education = () => {
   const { ref, isVisible } = useScrollAnimation();

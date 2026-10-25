@@ -26,7 +26,7 @@
   &.scrolled {
     background-color: var(--nav-bg-scrolled);
     border-bottom-color: var(--border-subtle);
-    box-shadow: 0 4px 24px rgba(19, 26, 43, 0.06);
+    box-shadow: var(--card-shadow);
 
     nav {
       padding: 0.6rem 2rem;
@@ -41,18 +41,17 @@
   cursor: pointer;
   text-decoration: none;
 
-  .logo-image {
-    width: 30px;
-    height: 30px;
-    border-radius: 6px;
+  .logoText {
+    font-family: var(--font-serif);
+    font-size: 1.85rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--dark);
+    letter-spacing: -0.01em;
   }
 
-  .logoText {
-    font-family: var(--font-mono);
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--dark);
-    letter-spacing: -0.02em;
+  .logo-dot {
+    color: var(--accent);
   }
 }
 

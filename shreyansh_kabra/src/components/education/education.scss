@@ -40,8 +40,8 @@
   /* Gradient top accent */
   &::before {
     content: "";
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+    height: 2px;
+    background: var(--accent);
     display: block;
     flex-shrink: 0;
   }

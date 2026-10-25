@@ -14,7 +14,7 @@ import {
   SiMongodb,
   SiGooglecloud,
   SiHtml5,
-  SiCss3,
+  SiCss,
   SiAndroid,
   SiTensorflow,
   SiKeras,
@@ -22,72 +22,47 @@ import {
   SiPostman,
   SiGit,
   SiRedis,
-  SiAmazonwebservices,
   SiTypescript,
-  SiAmazondynamodb,
   SiClaude,
   SiOllama,
 } from "react-icons/si";
 
 import { DiNodejs } from "react-icons/di";
+import { FaAws, FaDatabase } from "react-icons/fa";
 import { GiBrain } from "react-icons/gi";
+import type { IconType } from "react-icons";
+import { profile } from "../../data/profile";
 
-const skillCategories = [
-  {
-    category: "Languages",
-    skills: [
-      { name: "Python", Icon: SiPython },
-      { name: "JavaScript", Icon: SiJavascript },
-      { name: "TypeScript", Icon: SiTypescript },
-      { name: "C++", Icon: SiCplusplus },
-    ],
-  },
-  {
-    category: "Web & Backend",
-    skills: [
-      { name: "React", Icon: SiReact },
-      { name: "Node.js", Icon: DiNodejs },
-      { name: "Django", Icon: SiDjango },
-      { name: "HTML5", Icon: SiHtml5 },
-      { name: "CSS3", Icon: SiCss3 },
-    ],
-  },
-  {
-    category: "Databases",
-    skills: [
-      { name: "PostgreSQL", Icon: SiPostgresql },
-      { name: "MongoDB", Icon: SiMongodb },
-      { name: "Redis", Icon: SiRedis },
-      { name: "DynamoDB", Icon: SiAmazondynamodb },
-    ],
-  },
-  {
-    category: "AI / ML",
-    skills: [
-      { name: "TensorFlow", Icon: SiTensorflow },
-      { name: "Keras", Icon: SiKeras },
-      { name: "Hugging Face", Icon: SiHuggingface },
-      { name: "NLP", Icon: GiBrain },
-      { name: "Pandas", Icon: SiPandas },
-      { name: "NumPy", Icon: SiNumpy },
-      { name: "PyTorch" },
-      { name: "RAG" },
-    ],
-  },
-  {
-    category: "Tools & Cloud",
-    skills: [
-      { name: "AWS", Icon: SiAmazonwebservices },
-      { name: "GCP", Icon: SiGooglecloud },
-      { name: "Git", Icon: SiGit },
-      { name: "Postman", Icon: SiPostman },
-      { name: "Android", Icon: SiAndroid },
-      { name: "Claude Code", Icon: SiClaude },
-      { name: "AWS Kiro", Icon: SiAmazonwebservices },
-      { name: "Ollama", Icon: SiOllama },
-    ],
-  },
-];
+// Display icon per skill name; skills without an entry render as text only
+const skillIcons: Record<string, IconType> = {
+  Python: SiPython,
+  JavaScript: SiJavascript,
+  TypeScript: SiTypescript,
+  "C++": SiCplusplus,
+  React: SiReact,
+  "Node.js": DiNodejs,
+  Django: SiDjango,
+  HTML5: SiHtml5,
+  CSS3: SiCss,
+  PostgreSQL: SiPostgresql,
+  MongoDB: SiMongodb,
+  Redis: SiRedis,
+  DynamoDB: FaDatabase,
+  TensorFlow: SiTensorflow,
+  Keras: SiKeras,
+  "Hugging Face": SiHuggingface,
+  NLP: GiBrain,
+  Pandas: SiPandas,
+  NumPy: SiNumpy,
+  AWS: FaAws,
+  GCP: SiGooglecloud,
+  Git: SiGit,
+  Postman: SiPostman,
+  Android: SiAndroid,
+  "Claude Code": SiClaude,
+  "AWS Kiro": FaAws,
+  Ollama: SiOllama,
+};
 
 const Technical: React.FC = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -101,16 +76,19 @@ const Technical: React.FC = () => {
         ref={ref}
         className={`skills-container stagger-children ${isVisible ? "visible" : ""}`}
       >
-        {skillCategories.map((cat, idx) => (
+        {profile.skills.map((cat, idx) => (
           <div className="skill-category animate-child" data-spotlight key={idx}>
             <h3 className="category-label">{cat.category}</h3>
             <div className="skills-row">
-              {cat.skills.map(({ name, Icon }, i) => (
-                <div className="skill-card" key={i}>
-                  {Icon && <Icon className="skill-icon" />}
-                  <span>{name}</span>
-                </div>
-              ))}
+              {cat.skills.map((name, i) => {
+                const Icon = skillIcons[name];
+                return (
+                  <div className="skill-card" key={i}>
+                    {Icon && <Icon className="skill-icon" />}
+                    <span>{name}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         ))}
