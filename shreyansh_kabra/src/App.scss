@@ -54,8 +54,10 @@ body {
   --card-shadow: 0 1px 0 rgba(26, 26, 26, 0.04);
   --card-shadow-hover: 0 12px 32px rgba(26, 26, 26, 0.08);
   --border-subtle: #d9d2c5; /* hairline rules */
-  --nav-bg: rgba(245, 241, 234, 0.72);
-  --nav-bg-scrolled: rgba(245, 241, 234, 0.9);
+  /* Opaque on purpose: Safari 26 samples a fixed header's background to tint
+     its toolbar, and a translucent/blurred header ends up hidden under it. */
+  --nav-bg: #f5f1ea;
+  --nav-bg-scrolled: #f5f1ea;
   --overlay: rgba(26, 24, 22, 0.5); /* modal / palette backdrop */
   /* Translucent section surfaces so the paper grain shows through subtly */
   --surface-1: rgba(245, 241, 234, 0.86);
@@ -107,8 +109,8 @@ body.dark-mode {
   --card-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
   --card-shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.45);
   --border-subtle: #2e2b27;
-  --nav-bg: rgba(18, 17, 16, 0.72);
-  --nav-bg-scrolled: rgba(18, 17, 16, 0.9);
+  --nav-bg: #121110;
+  --nav-bg-scrolled: #121110;
   --overlay: rgba(0, 0, 0, 0.6);
   --surface-1: rgba(18, 17, 16, 0.82);
   --surface-2: rgba(14, 13, 12, 0.8);
