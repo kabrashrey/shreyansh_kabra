@@ -13,13 +13,19 @@ import {
   FiMoon,
   FiSearch,
   FiCornerDownLeft,
+  FiCopy,
+  FiTerminal,
+  FiClock,
+  FiExternalLink,
 } from "react-icons/fi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import type { IconType } from "react-icons";
 import "./commandPalette.scss";
 import { ThemeContext } from "../../context/themeContext";
 import resume from "../../assets/Shreyansh_Kabra.pdf";
-import { socialUrl } from "../../data/profile";
+import { profile, socialUrl } from "../../data/profile";
+import { copyEmail, getRecentProjects, openProject } from "../../utils/ui";
+import Terminal from "./Terminal";
 
 interface Command {
   id: string;
@@ -34,6 +40,8 @@ const CommandPalette = () => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState(0);
+  const [mode, setMode] = useState<"commands" | "terminal">("commands");
+  const [recent, setRecent] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -109,8 +117,25 @@ const CommandPalette = () => {
         run: openUrl(socialUrl("LinkedIn")),
       },
       {
+        id: "copy-email",
+        label: "Copy email address",
+        hint: profile.email,
+        Icon: FiCopy,
+        keywords: "contact mail clipboard",
+        run: () => copyEmail(profile.email),
+      },
+      {
+        id: "terminal",
+        label: "Open terminal",
+        hint: ">",
+        Icon: FiTerminal,
+        keywords: "shell console cli",
+        run: () => setMode("terminal"),
+      },
+      {
         id: "theme",
-        label: theme === "dark" ? "Switch to light mode" : "Switch to dark mode",
+        label:
+          theme === "dark" ? "Switch to light mode" : "Switch to dark mode",
         Icon: theme === "dark" ? FiSun : FiMoon,
         keywords: "theme toggle appearance",
         run: toggleTheme,
@@ -119,13 +144,35 @@ const CommandPalette = () => {
     [theme, toggleTheme]
   );
 
+  // Every project is searchable by title or tech
+  const projectCommands: Command[] = useMemo(
+    () =>
+      profile.projects.map((p) => ({
+        id: `project-${p.title}`,
+        label: `Open project: ${p.title}`,
+        Icon: FiExternalLink,
+        keywords: `project ${p.techStack.join(" ")}`,
+        run: () => openProject(p.title),
+      })),
+    []
+  );
+
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return commands;
-    return commands.filter((c) =>
+    if (!q) {
+      // Recently viewed projects first, then the regular commands
+      const recentCommands = recent.flatMap((title) => {
+        const cmd = projectCommands.find((c) => c.id === `project-${title}`);
+        return cmd
+          ? [{ ...cmd, id: `recent-${title}`, hint: "Recent", Icon: FiClock }]
+          : [];
+      });
+      return [...recentCommands, ...commands];
+    }
+    return [...commands, ...projectCommands].filter((c) =>
       `${c.label} ${c.keywords ?? ""}`.toLowerCase().includes(q)
     );
-  }, [query, commands]);
+  }, [query, commands, projectCommands, recent]);
 
   // Global open/close shortcut (Cmd/Ctrl+K) + button-triggered open event
   useEffect(() => {
@@ -149,6 +196,8 @@ const CommandPalette = () => {
     if (!open) return;
     setQuery("");
     setIndex(0);
+    setMode("commands");
+    setRecent(getRecentProjects());
     const opener = document.activeElement as HTMLElement | null;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -172,12 +221,22 @@ const CommandPalette = () => {
     const cmd = results[i];
     if (!cmd) return;
     cmd.run();
-    setOpen(false);
+    // Terminal switches mode inside the palette instead of closing it
+    if (cmd.id !== "terminal") setOpen(false);
+  };
+
+  const exitTerminal = () => {
+    setMode("commands");
+    setQuery("");
+    window.setTimeout(() => inputRef.current?.focus(), 0);
   };
 
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Escape") {
       setOpen(false);
+    } else if (mode === "terminal") {
+      // The terminal handles its own keys
+      return;
     } else if (e.key === "ArrowDown") {
       e.preventDefault();
       setIndex((i) => (i + 1) % Math.max(results.length, 1));
@@ -211,41 +270,55 @@ const CommandPalette = () => {
         className="cmdk-panel"
         role="dialog"
         aria-modal="true"
-        aria-label="Command palette"
+        aria-label={mode === "terminal" ? "Terminal" : "Command palette"}
         onClick={(e) => e.stopPropagation()}
         onKeyDown={onKeyDown}
       >
-        <div className="cmdk-search">
-          <FiSearch className="cmdk-search-icon" />
-          <input
-            ref={inputRef}
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Jump to a section or action…"
-            aria-label="Search commands"
-          />
-          <kbd className="cmdk-esc">ESC</kbd>
-        </div>
+        {mode === "terminal" ? (
+          <Terminal onExit={exitTerminal} onClose={() => setOpen(false)} />
+        ) : (
+          <>
+            <div className="cmdk-search">
+              <FiSearch className="cmdk-search-icon" />
+              <input
+                ref={inputRef}
+                value={query}
+                onChange={(e) => {
+                  // A leading ">" switches to terminal mode
+                  if (e.target.value.startsWith(">")) setMode("terminal");
+                  else setQuery(e.target.value);
+                }}
+                placeholder="Search, or type > for a terminal…"
+                aria-label="Search commands"
+              />
+              <kbd className="cmdk-esc">ESC</kbd>
+            </div>
 
-        <div className="cmdk-list" ref={listRef}>
-          {results.length === 0 && (
-            <div className="cmdk-empty">No results</div>
-          )}
-          {results.map((cmd, i) => (
-            <button
-              key={cmd.id}
-              type="button"
-              className={`cmdk-item ${i === index ? "is-active" : ""}`}
-              onMouseEnter={() => setIndex(i)}
-              onClick={() => runAt(i)}
-            >
-              <cmd.Icon className="cmdk-item-icon" />
-              <span className="cmdk-item-label">{cmd.label}</span>
-              {cmd.hint && <span className="cmdk-item-hint">{cmd.hint}</span>}
-              {i === index && <FiCornerDownLeft className="cmdk-item-enter" />}
-            </button>
-          ))}
-        </div>
+            <div className="cmdk-list" ref={listRef}>
+              {results.length === 0 && (
+                <div className="cmdk-empty">No results</div>
+              )}
+              {results.map((cmd, i) => (
+                <button
+                  key={cmd.id}
+                  type="button"
+                  className={`cmdk-item ${i === index ? "is-active" : ""}`}
+                  onMouseEnter={() => setIndex(i)}
+                  onClick={() => runAt(i)}
+                >
+                  <cmd.Icon className="cmdk-item-icon" />
+                  <span className="cmdk-item-label">{cmd.label}</span>
+                  {cmd.hint && (
+                    <span className="cmdk-item-hint">{cmd.hint}</span>
+                  )}
+                  {i === index && (
+                    <FiCornerDownLeft className="cmdk-item-enter" />
+                  )}
+                </button>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>,
     document.body

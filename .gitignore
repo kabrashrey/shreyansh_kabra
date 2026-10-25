@@ -34,3 +34,7 @@ dist-ssr
 # Tool caches
 *.tsbuildinfo
 .eslintcache
+
+# Lighthouse CI local reports
+.lighthouseci/
+lhci-report/

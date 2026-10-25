@@ -119,3 +119,27 @@
     gap: 0.6rem;
   }
 }
+
+/* Click-to-copy email under the social links */
+.copy-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.35rem 0.6rem;
+  background: transparent;
+  color: var(--gray-dark);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 400;
+  border: 1px dashed var(--border-subtle);
+
+  svg {
+    color: var(--primary);
+  }
+
+  &:hover {
+    color: var(--dark);
+    border-color: var(--accent);
+  }
+}

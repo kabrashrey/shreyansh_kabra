@@ -6,44 +6,16 @@
   pointer-events: none;
 }
 
-/* ── Paper grain overlay (inline SVG turbulence, no asset) ── */
+/* ── Paper grain overlay (inline SVG turbulence, no asset) ──
+   Static on purpose: animating it registered as full-viewport layout
+   shifts (CLS) and real paper doesn't shimmer. */
 .ambient-grain {
   position: absolute;
-  inset: -50%;
-  width: 200%;
-  height: 200%;
+  inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   opacity: 0.05;
-  animation: grain-shift 8s steps(6) infinite;
 }
 
 body.dark-mode .ambient-grain {
   opacity: 0.06;
-}
-
-@keyframes grain-shift {
-  0% {
-    transform: translate(0, 0);
-  }
-  20% {
-    transform: translate(-4%, 3%);
-  }
-  40% {
-    transform: translate(3%, -4%);
-  }
-  60% {
-    transform: translate(-3%, 2%);
-  }
-  80% {
-    transform: translate(2%, -3%);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ambient-grain {
-    animation: none;
-  }
 }

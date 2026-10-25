@@ -20,6 +20,8 @@ const About = () => {
               src={profile.photo}
               alt={profile.name}
               className="about-image"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="about-text animate-child">

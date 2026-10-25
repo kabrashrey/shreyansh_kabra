@@ -121,6 +121,84 @@
   font-size: 0.9rem;
 }
 
+/* ── Terminal mode ── */
+.term {
+  display: flex;
+  flex-direction: column;
+  height: min(420px, 60vh);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--dark);
+  cursor: text;
+}
+
+.term-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1rem 0.5rem;
+}
+
+.term-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-bottom: 0.35rem;
+
+  b {
+    color: var(--primary);
+    font-weight: 500;
+  }
+}
+
+.term-input {
+  color: var(--dark);
+}
+
+.term-output {
+  color: var(--gray-dark);
+}
+
+.term-error {
+  color: var(--primary);
+}
+
+.term-prompt {
+  color: var(--accent);
+}
+
+.term-help {
+  display: grid;
+  gap: 0.1rem;
+
+  div {
+    display: flex;
+    gap: 1rem;
+  }
+
+  dt {
+    min-width: 4.5rem;
+    color: var(--dark);
+  }
+}
+
+.term-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border-subtle);
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--dark);
+    font: inherit;
+    caret-color: var(--accent);
+  }
+}
+
 @keyframes cmdk-fade {
   from {
     opacity: 0;

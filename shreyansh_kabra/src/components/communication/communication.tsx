@@ -1,7 +1,9 @@
 import "./communication.scss";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+import { FiCopy } from "react-icons/fi";
 import { profile } from "../../data/profile";
+import { copyEmail } from "../../utils/ui";
 
 // Presentation per social; URLs come from the profile
 const socialStyle = {
@@ -48,6 +50,16 @@ const Communication = () => {
             </a>
           ))}
         </div>
+
+        <button
+          type="button"
+          className="copy-email"
+          onClick={() => copyEmail(profile.email)}
+          aria-label={`Copy email address ${profile.email}`}
+        >
+          {profile.email}
+          <FiCopy />
+        </button>
       </div>
     </section>
   );

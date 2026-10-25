@@ -11,7 +11,12 @@ export const siteUrl = __SITE_URL__;
  * instead of the skeleton fallbacks.
  */
 export async function render(): Promise<string> {
-  const { prelude } = await prerenderToNodeStream(<Root />);
+  // Never outline Suspense boundaries: React otherwise emits large sections
+  // as skeleton fallbacks plus hidden content swapped in by inline script,
+  // which hides real content from crawlers and flashes skeletons on load.
+  const { prelude } = await prerenderToNodeStream(<Root />, {
+    progressiveChunkSize: Number.POSITIVE_INFINITY,
+  });
   const chunks: Buffer[] = [];
   for await (const chunk of prelude) {
     chunks.push(Buffer.from(chunk));

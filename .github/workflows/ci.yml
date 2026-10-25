@@ -1,0 +1,58 @@
+name: CI
+
+# Checks only — deployment stays manual (`npm run deploy`).
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: shreyansh_kabra
+
+jobs:
+  check:
+    name: Lint, build & test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: shreyansh_kabra/package-lock.json
+
+      - run: npm ci
+      - run: npm run lint
+      # Typecheck + production build + prerender (GitHub Pages base path)
+      - run: npm run build
+      - run: npm test
+
+  lighthouse:
+    name: Lighthouse budget
+    runs-on: ubuntu-latest
+    needs: check
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: shreyansh_kabra/package-lock.json
+
+      - run: npm ci
+      # Root base path so Lighthouse's static server resolves /assets/...
+      - run: npm run build:domain
+      - run: npx @lhci/cli@0.15.1 autorun
+      # HTML reports, downloadable from the workflow run
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-report
+          path: shreyansh_kabra/lhci-report

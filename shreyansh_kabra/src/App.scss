@@ -360,6 +360,20 @@ body.dark-mode ::-webkit-scrollbar-thumb {
   background: var(--accent);
 }
 
+/* ========== Theme switch (View Transitions) ========== */
+/* The JS in themeProvider animates a circular clip on the new snapshot;
+   disable the default cross-fade so only the reveal is visible. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+html.theme-switching,
+html.theme-switching * {
+  transition: none !important;
+}
+
 /* ========== Reduced Motion ========== */
 @media (prefers-reduced-motion: reduce) {
   *,
