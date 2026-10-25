@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shreyanshkabra.com/sitemap.xml
+Sitemap: https://kabrashrey.github.io/shreyansh_kabra/sitemap.xml

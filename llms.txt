@@ -1,0 +1,27 @@
+# Shreyansh Kabra
+
+> Software Engineer based in Los Angeles, CA. Backend & cloud engineer building scalable, observable systems — from edge-to-cloud platforms and distributed caching to LLM & RAG applications.
+
+This site is a single-page portfolio rendered with React. The files below contain the same content as plain Markdown.
+
+## Profile
+
+- [Full profile](https://kabrashrey.github.io/shreyansh_kabra/llms-full.txt): about, experience, projects, skills and education in one file
+- [Résumé (Markdown)](https://kabrashrey.github.io/shreyansh_kabra/resume.md): same content, résumé layout
+- [GitHub](https://github.com/kabrashrey): source code and repositories
+- [LinkedIn](https://www.linkedin.com/in/shreyansh-kabra/): professional profile
+- Contact: kabras@usc.edu
+
+## Projects
+
+- [Artist Search – Web App](https://github.com/kabrashrey/artsy-search): Full-stack app integrating Artsy API to explore 100K+ artists. JWT auth, MongoDB, deployed on GCP with perfect Lighthouse scores.
+- [Artist Search – Android App](https://github.com/kabrashrey/artsy-mobile-app): Native Android app with Kotlin and Node.js backend for Artsy's database. Token-based auth and MongoDB persistence.
+- [Portfolio Website](https://github.com/kabrashrey/shreyansh_kabra): Personal portfolio built with React, TypeScript, and Vite. Dark/light mode, responsive layout, and optimized loading.
+- [Image Classification – Transfer Learning](https://github.com/kabrashrey/Image-Classification-Transfer-Learning): Image classification using transfer learning with TensorFlow/Keras. Fine-tuned pre-trained model on custom artwork dataset.
+- [Police Activity & Weather Analysis](https://github.com/kabrashrey/police_weather_data_analysis): Analyzed 86K+ RI traffic stops with weather data to identify biases and temporal patterns using statistical analysis.
+- [Mental Health Signal Detector](https://github.com/Gaurav-Zanpure/group-23-mh-signals): Real-time NLP system classifying support group posts by intent and concern level, with a lightweight RAG module for suggestions.
+- [Evidence based RAG for Hallucination-Resistant Multihop Q&A](https://github.com/kabrashrey/hallucination_resistant_multihop_qna): Evidence-based RAG system for multihop question answering, RAG module for suggestions.
+
+## Optional
+
+- [Website source](https://github.com/kabrashrey/shreyansh_kabra): code for this portfolio
