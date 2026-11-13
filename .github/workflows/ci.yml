@@ -10,10 +10,6 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
-defaults:
-  run:
-    working-directory: shreyansh_kabra
-
 jobs:
   check:
     name: Lint, build & test
@@ -25,7 +21,6 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: shreyansh_kabra/package-lock.json
 
       - run: npm ci
       - run: npm run lint
@@ -44,15 +39,16 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: shreyansh_kabra/package-lock.json
 
       - run: npm ci
       # Root base path so Lighthouse's static server resolves /assets/...
       - run: npm run build:domain
+      # Same smoke tests against the custom-domain build (incl. CNAME)
+      - run: npm test
       - run: npx @lhci/cli@0.15.1 autorun
       # HTML reports, downloadable from the workflow run
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: lighthouse-report
-          path: shreyansh_kabra/lhci-report
+          path: lhci-report

@@ -59,14 +59,35 @@ warns below 90). Lighthouse HTML reports are attached to each workflow run.
 npm run deploy
 ```
 
-**Custom domain (shreyanshkabra.com):**
+**Custom domain:**
 
 ```bash
 npm run deploy:domain
 ```
 
-Then in the GitHub repository: **Settings → Pages → Custom domain** → enter the
-domain → enable **Enforce HTTPS**.
+This builds with base `/` and writes `dist/CNAME`, so the domain set in
+GitHub survives every deploy.
+
+### Moving to a custom domain
+
+1. Set `CUSTOM_DOMAIN` at the top of `vite.config.ts` (currently a
+   placeholder). Nothing else holds the domain.
+2. Verify the domain in your GitHub account settings (**Settings → Pages →
+   Add a domain**), so nobody else can take it over.
+3. Run `npm run deploy:domain`. Its CNAME file adds the domain to the repo's
+   Pages settings. GitHub says to add the domain before configuring DNS.
+4. Right away, at your DNS provider, point the domain at GitHub Pages:
+   [GitHub docs: managing a custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
+   The site may be unreachable until DNS propagates, which can take up to 24 hours.
+5. In the repository: **Settings → Pages** → enable **Enforce HTTPS** once
+   the certificate is issued.
+6. Update the **Live** link at the top of this README.
+
+After the switch, deploy only with `npm run deploy:domain`. Plain
+`npm run deploy` would publish the `/shreyansh_kabra/` build without a CNAME
+and switch the site back to github.io. Check afterwards whether
+`kabrashrey.github.io/shreyansh_kabra/` redirects to the new domain. GitHub's
+docs don't say either way.
 
 ## Editing content
 

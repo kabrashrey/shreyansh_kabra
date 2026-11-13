@@ -5,7 +5,7 @@
  * scripts/prerender.mjs — by the generated llms.txt, resume.md and JSON-LD.
  * Edit content here; components should only handle presentation.
  */
-import photo from "../assets/me.jpg";
+import photo from "../assets/me.png";
 import hpeLogo from "../assets/hpe.jpeg";
 import amazonLogo from "../assets/aws.png";
 import uscLogo from "../assets/USC_logo.png";

@@ -44,9 +44,7 @@ const render = (svg, width) =>
 const og = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#f5f1ea"/>
   <rect x="40" y="40" width="1120" height="550" fill="none" stroke="#d9d2c5" stroke-width="2"/>
-  <text x="96" y="148" font-family="Instrument Serif" font-size="64" fill="#1a1a1a">SK<tspan fill="#e5482d">.</tspan></text>
-  <text x="1104" y="138" text-anchor="end" font-family="IBM Plex Mono" font-size="22" fill="#6b6560">kabrashrey.github.io/shreyansh_kabra</text>
-  <text x="96" y="368" font-family="Instrument Serif" font-size="148" letter-spacing="-2" fill="#1a1a1a">Shreyansh Kabra<tspan fill="#e5482d">.</tspan></text>
+  <text x="96" y="148" font-family="Instrument Serif" font-size="64" fill="#1a1a1a">SK<tspan fill="#e5482d">.</tspan></text>  <text x="96" y="368" font-family="Instrument Serif" font-size="148" letter-spacing="-2" fill="#1a1a1a">Shreyansh Kabra<tspan fill="#e5482d">.</tspan></text>
   <rect x="100" y="408" width="72" height="3" fill="#e5482d"/>
   <text x="96" y="470" font-family="IBM Plex Mono" font-size="30" fill="#1a1a1a">Software Engineer — backend · cloud · AI/ML</text>
   <text x="96" y="530" font-family="IBM Plex Mono" font-size="24" fill="#6b6560">M.S. Computer Science @ USC  ·  ex-AWS  ·  ex-HPE</text>

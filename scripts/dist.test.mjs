@@ -76,6 +76,16 @@ test("llms.txt follows the llmstxt.org shape and links resolve to this site", as
   assert.equal(full, await read("resume.md"));
 });
 
+test("CNAME is present only for custom-domain builds and matches the canonical host", async () => {
+  const host = new URL(canonical).hostname;
+  const cname = await read("CNAME").catch(() => null);
+  if (host.endsWith(".github.io")) {
+    assert.equal(cname, null, "GitHub Pages build must not ship a CNAME");
+  } else {
+    assert.equal(cname?.trim(), host);
+  }
+});
+
 test("sitemap and robots point at the canonical URL", async () => {
   assert.ok((await read("sitemap.xml")).includes(`<loc>${canonical}</loc>`));
   assert.ok(

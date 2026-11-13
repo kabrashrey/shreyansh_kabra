@@ -2,15 +2,19 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
-// When deploying to a custom domain (shreyanshkabra.com), set base to '/'.
-// For GitHub Pages (kabrashrey.github.io/shreyansh_kabra/), keep the subpath.
+// Future personal domain (placeholder until bought). The only place to change
+// it: the CNAME, canonical/OG tags, sitemap, JSON-LD and llms.txt follow.
+const CUSTOM_DOMAIN = "shreyanshkabra.com";
+
+// `npm run build` / `deploy` -> GitHub Pages at kabrashrey.github.io/shreyansh_kabra/
+// `npm run build:domain` / `deploy:domain` -> https://CUSTOM_DOMAIN/ (root base)
 const useCustomDomain = process.env.VITE_CUSTOM_DOMAIN === "true";
 const base = useCustomDomain ? "/" : "/shreyansh_kabra/";
 
 // Absolute URL of the deployed site; used for canonical/OG tags, the
 // sitemap, JSON-LD and llms.txt so they always match where the site lives.
 const siteUrl = useCustomDomain
-  ? "https://shreyanshkabra.com/"
+  ? `https://${CUSTOM_DOMAIN}/`
   : "https://kabrashrey.github.io/shreyansh_kabra/";
 
 const PRELOAD_FONTS = [

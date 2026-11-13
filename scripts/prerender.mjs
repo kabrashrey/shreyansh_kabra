@@ -164,6 +164,13 @@ await Promise.all([
   writeFile(`${dist}/sitemap.xml`, sitemap),
   writeFile(`${dist}/robots.txt`, robots),
 ]);
+
+// Custom-domain builds ship a CNAME so GitHub Pages keeps the domain;
+// gh-pages replaces the whole branch on deploy and would otherwise drop it.
+const host = new URL(siteUrl).hostname;
+if (!host.endsWith(".github.io")) {
+  await writeFile(`${dist}/CNAME`, `${host}\n`);
+}
 await rm(ssrDir, { recursive: true, force: true });
 
 console.log(
